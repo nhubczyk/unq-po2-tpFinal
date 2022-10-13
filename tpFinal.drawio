@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-10-13T19:48:44.558Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="brD_NOT1JIORSRMMDM-p" version="20.4.0" type="github">
+<mxfile host="app.diagrams.net" modified="2022-10-13T19:58:53.260Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="O8OYN1NsXLNANx1jOYAs" version="20.4.0" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="863" dy="1643" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -179,7 +179,7 @@
         <mxCell id="axV663DeKGKB3O0kkRm1-53" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="axV663DeKGKB3O0kkRm1-51">
           <mxGeometry y="26" width="220" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="axV663DeKGKB3O0kkRm1-54" value="+ cumpleRestriccion(LocalDate): bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="axV663DeKGKB3O0kkRm1-51">
+        <mxCell id="axV663DeKGKB3O0kkRm1-54" value="+ cumpleRestriccion(LocalDate): bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontStyle=2" vertex="1" parent="axV663DeKGKB3O0kkRm1-51">
           <mxGeometry y="34" width="220" height="26" as="geometry" />
         </mxCell>
         <mxCell id="axV663DeKGKB3O0kkRm1-55" value="restriccionesTemporales" style="endArrow=open;html=1;endSize=12;startArrow=none;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0;exitY=0.25;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="axV663DeKGKB3O0kkRm1-40" target="axV663DeKGKB3O0kkRm1-51">
@@ -225,12 +225,12 @@
           <mxGeometry y="34" width="220" height="26" as="geometry" />
         </mxCell>
         <mxCell id="axV663DeKGKB3O0kkRm1-78" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;DiaSemana&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;Lunes&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;Martes&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;Miercoles&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;Jueves&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;Viernes&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;Sabado&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;Domingo&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ method1(Type): Type&lt;br&gt;+ method2(Type, Type): Type&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="780" y="670" width="170" height="150" as="geometry" />
+          <mxGeometry x="750" y="670" width="170" height="150" as="geometry" />
         </mxCell>
         <mxCell id="axV663DeKGKB3O0kkRm1-79" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;Restriccion&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;DiaDeSemana&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;FinDeSemana&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ method1(Type): Type&lt;br&gt;+ method2(Type, Type): Type&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="670" y="970" width="140" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="axV663DeKGKB3O0kkRm1-81" value="RestriccionTemporalEntreDias" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="axV663DeKGKB3O0kkRm1-81" value="RestriccionTemporalDiaSemana" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="390" y="740" width="220" height="60" as="geometry" />
         </mxCell>
         <mxCell id="axV663DeKGKB3O0kkRm1-84" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="axV663DeKGKB3O0kkRm1-81">
@@ -254,7 +254,7 @@
         </mxCell>
         <mxCell id="axV663DeKGKB3O0kkRm1-88" value="*" style="edgeLabel;resizable=0;html=1;align=right;verticalAlign=top;fontSize=17;" connectable="0" vertex="1" parent="axV663DeKGKB3O0kkRm1-87">
           <mxGeometry x="1" relative="1" as="geometry">
-            <mxPoint x="20" y="-30" as="offset" />
+            <mxPoint x="-10" y="-30" as="offset" />
           </mxGeometry>
         </mxCell>
       </root>
