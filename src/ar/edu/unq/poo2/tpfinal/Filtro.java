@@ -1,9 +1,7 @@
-package filtros;
+package ar.edu.unq.poo2.tpfinal;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import SinImplementar.Proyecto;
 
 public abstract class Filtro {
 	public abstract boolean cumpleFiltro(Proyecto p);

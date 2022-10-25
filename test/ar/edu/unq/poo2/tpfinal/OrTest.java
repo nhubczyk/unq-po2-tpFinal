@@ -1,4 +1,4 @@
-package filtrosTests;
+package ar.edu.unq.poo2.tpfinal;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -9,10 +9,6 @@ import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import SinImplementar.Proyecto;
-import filtros.FiltroOr;
-import filtros.Filtro;
 
 class OrTest {
 

@@ -1,6 +1,6 @@
-package SinImplementar;
+package ar.edu.unq.poo2.tpfinal;
 
-public class Proyecto implements Observed {
+public class Proyecto{
 	private String nombre;
 	
 	public String getNombre() {

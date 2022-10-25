@@ -1,13 +1,9 @@
-package filtrosTests;
+package ar.edu.unq.poo2.tpfinal;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import SinImplementar.Proyecto;
-import filtros.FiltroAnd;
-import filtros.Filtro;
 
 import static org.mockito.Mockito.*;
 

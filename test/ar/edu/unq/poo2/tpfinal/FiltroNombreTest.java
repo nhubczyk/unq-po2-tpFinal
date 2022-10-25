@@ -1,13 +1,10 @@
-package filtrosTests;
+package ar.edu.unq.poo2.tpfinal;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import SinImplementar.Proyecto;
-import filtros.FiltroNombre;
 
 class FiltroNombreTest {
 

@@ -1,6 +1,4 @@
-package filtros;
-
-import SinImplementar.Proyecto;
+package ar.edu.unq.poo2.tpfinal;
 
 public class FiltroCategoria extends Filtro {
 

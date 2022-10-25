@@ -1,4 +1,4 @@
-package filtrosTests;
+package ar.edu.unq.poo2.tpfinal;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
@@ -6,11 +6,6 @@ import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import SinImplementar.Categoria;
-import SinImplementar.Proyecto;
-import filtros.FiltroCategoria;
-import filtros.Filtro;
 
 class FiltroCategoriaTest {
 
