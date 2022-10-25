@@ -11,13 +11,14 @@ class CienciaParticipativaTestCase {
 	
 	@Before
 	public void setUp() {
-		ciencia = new CienciaPartipativa();
+		ciencia = new CienciaParticipativa();
 		proyecto = mock(Proyecto.class);
 	}
 	
 	@Test
 	void testAgregarProyecto() {
-		
+		ciencia.addProyecto(proyecto);
+		assertTrue(ciencia.tieneElElemento(proyecto));
 	}
 
 }
