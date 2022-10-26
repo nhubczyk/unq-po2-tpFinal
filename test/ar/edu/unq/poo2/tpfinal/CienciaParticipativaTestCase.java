@@ -8,15 +8,18 @@ import org.junit.jupiter.api.Test;
 class CienciaParticipativaTestCase {
 	private CienciaParticipativa ciencia; //SUT
 	private Proyecto proyecto; // DOC
+	private Proyecto proyecto2; // DOC
 	
 	@Before
 	public void setUp() {
-		ciencia = new CienciaParticipativa();
 		proyecto = mock(Proyecto.class);
+		proyecto2 = mock(Proyecto.class);
 	}
 	
 	@Test
 	void testAgregarProyecto() {
+		ciencia = new CienciaParticipativa();
+		assertFalse(ciencia.tieneElElemento(proyecto2));
 		ciencia.addProyecto(proyecto);
 		assertTrue(ciencia.tieneElElemento(proyecto));
 	}
