@@ -48,4 +48,19 @@ public class Proyecto {
 	public Boolean contieneUsuario(Usuario user) {
 		return this.participantes.contains(user);
 	}
+	
+	public void addMuestra(Muestra muestra) {
+		this.muestras.add(muestra);
+	}
+	
+	public Boolean tieneMuestra(Muestra muestra) {
+		return this.muestras.contains(muestra);
+	}
+	
+	public List<Muestra> listadoDeMuestras() {
+		var muestrasADevolver = new ArrayList<Muestra>(muestras);
+		return muestrasADevolver;
+	}
+	
+	
 }
