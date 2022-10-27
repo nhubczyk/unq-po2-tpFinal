@@ -32,9 +32,8 @@ public class Proyecto {
 		this.descripcion=descripcion;
 	}
 	
-	public List<Categoria> listadoDeCategorias() {
-		var categoriasADevolver = new ArrayList<Categoria>(categorias);
-		return categoriasADevolver;
+	public List<Categoria> getCategorias() {
+		return categorias;
 	}
 	
 	public void addCategoria(Categoria cat) {
@@ -57,9 +56,8 @@ public class Proyecto {
 		return this.muestras.contains(muestra);
 	}
 	
-	public List<Muestra> listadoDeMuestras() {
-		var muestrasADevolver = new ArrayList<Muestra>(muestras);
-		return muestrasADevolver;
+	public List<Muestra> getMuestras() {
+		return muestras;
 	}
 	
 	

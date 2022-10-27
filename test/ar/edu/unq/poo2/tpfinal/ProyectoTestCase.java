@@ -3,7 +3,7 @@ package ar.edu.unq.poo2.tpfinal;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class ProyectoTestCase {
@@ -12,54 +12,82 @@ class ProyectoTestCase {
 	private Categoria categoria2; 
 	private Categoria categoria3;
 	private Usuario user; // DOC
+	private Usuario user2;
 	private Muestra muestra; 
+	private Muestra muestra2;
 	
-	@Before
+	@BeforeEach
 	public void setUp() {
+		proyecto = new Proyecto("Biotecnologia", "Proyecto biotecnologo");
 		categoria = mock(Categoria.class);
 		categoria2 = mock(Categoria.class);
 		categoria3 = mock(Categoria.class);
 		user = mock(Usuario.class);
+		user2 = mock(Usuario.class);
 		muestra = mock(Muestra.class);
+		muestra2 = mock(Muestra.class);
 	}
 	
 	@Test
 	void testGetNombre() {
-		proyecto = new Proyecto("Biotecnologia", "Proyecto biotecnologo");
 		assertEquals("Biotecnologia", proyecto.getNombre());
 	}
 	
 	@Test
+	void testNotGetNombre() {
+		assertNotEquals("Sociales", proyecto.getNombre());
+	}
+	
+	@Test
 	void testListadoDeCategorias() {
-		proyecto = new Proyecto("Biotecnologia", "Proyecto biotecnologo");
-		assertFalse(proyecto.listadoDeCategorias().contains(categoria2));
 		proyecto.addCategoria(categoria);
 		proyecto.addCategoria(categoria2);
 		proyecto.addCategoria(categoria3);
-		assertTrue(proyecto.listadoDeCategorias().contains(categoria));
+		assertTrue(proyecto.getCategorias().contains(categoria));
+	}
+	
+	@Test
+	void testNoListadoDeCategorias() {
+		proyecto.addCategoria(categoria);
+		proyecto.addCategoria(categoria2);
+		assertFalse(proyecto.getCategorias().contains(categoria3));
 	}
 	
 	@Test
 	void testSuscribirUsuario() {
-		proyecto = new Proyecto("Biotecnologia", "Proyecto biotecnologo");
 		proyecto.suscribir(user);
 		assertTrue(proyecto.contieneUsuario(user));
 	}
 	
 	@Test
+	void testNoSuscribirUsuario() {
+		proyecto.suscribir(user2);
+		assertFalse(proyecto.contieneUsuario(user));
+	}
+	
+	@Test
 	void testAddMuestra() {
-		proyecto = new Proyecto("Biotecnologia", "Proyecto biotecnologo");
-		assertFalse(proyecto.tieneMuestra(muestra));
 		proyecto.addMuestra(muestra);
 		assertTrue(proyecto.tieneMuestra(muestra));
 	}
 	
 	@Test
-	void testListadoDeMuestras() {
-		proyecto = new Proyecto("Biotecnologia", "Proyecto biotecnologo");
-		assertFalse(proyecto.listadoDeMuestras().contains(muestra));
+	void testNotAddMuestra() {
 		proyecto.addMuestra(muestra);
-		assertTrue(proyecto.listadoDeMuestras().contains(muestra));
+		assertFalse(proyecto.tieneMuestra(muestra2));
+	}
+	
+	@Test
+	void testListadoDeMuestras() {
+		proyecto.addMuestra(muestra);
+		proyecto.addMuestra(muestra2);
+		assertTrue(proyecto.getMuestras().contains(muestra));
+	}
+	
+	@Test
+	void testNoListadoDeMuestra() {
+		proyecto.addMuestra(muestra);
+		assertFalse(proyecto.getMuestras().contains(muestra2));
 	}
 
 }
