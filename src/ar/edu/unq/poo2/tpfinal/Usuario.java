@@ -39,7 +39,11 @@ public class Usuario {
 	}
 
 	public float porcentajeCompletitodGeneral(Proyecto proyecto) {
-		return 0; //FALTA IMPLEMENTAR 
+		float cantidadDePorcentaje = 0;
+		for (DesafioUsuario desafioUsuario : desafiosCompletos) {
+			cantidadDePorcentaje += desafioUsuario.getPorcentajeCompletitud();
+		}
+		return cantidadDePorcentaje;
 	}
 
 }

@@ -1,5 +1,5 @@
 package ar.edu.unq.poo2.tpfinal;
 
-public class recomendacionPreferencia {
+public class recomendacionPreferencia extends Recomendacion{
 
 }

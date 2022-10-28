@@ -7,44 +7,54 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class UsuarioTest {
+	private Proyecto proyecto;
 	private Usuario usuario;
 	private DesafioUsuario desafioCompletado;
 	private Desafio desafioSinAsignar;
 	private DesafioUsuario desafioSinCompletar;
-	
+	private recomendacionFavoritos recomendacionFavorita;
+
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		
+
 	}
 
 	@BeforeEach
 	void setUp() {
 		usuario = new Usuario();
 		usuario.superoElDesafio(desafioCompletado);
-		
+		desafioSinCompletar = new DesafioUsuario();
+		recomendacionFavorita = new recomendacionFavoritos();
+		proyecto = new Proyecto("POO2", "nashe");
+		desafioSinAsignar = new Desafio();
+
 	}
 
 	@Test
 	void testElDesafioFueSuperado() {
 		assertTrue(usuario.esCompletado(desafioCompletado));
 	}
-	
+
 	@Test
 	void testDesafioCompletitud() {
-		assertEquals(0,desafioSinCompletar.getPorcentajeCompletitud());
+		assertEquals(10.0, desafioSinCompletar.getPorcentajeCompletitud());
 	}
-	
+
 	@Test
 	void testSetMetodoRecomendacion() {
-		usuario.setMetodoDeRecomendacion(Recomendacion recomendacionFavoritos);
-		assertEquals(Recomendacion recomendacionFavoritos, usuario.getMetodoRecomendacion());
+		usuario.setMetodoDeRecomendacion(recomendacionFavorita);
+		assertEquals(recomendacionFavorita, usuario.getMetodoRecomendacion());
 	}
-	
-	@Test 
+
+	@Test
 	void testSuperoElDesafio() {
-		assertFalse(usuario.esCompletado(DesafioUsuario DesafioSinCompletar));
-		usuario.superoElDesafio(DesafioUsuario desafioSinCompletar);
-		assertTrue(usuario.esCompletado(null))
+		usuario.superoElDesafio(desafioSinCompletar);
+		assertTrue(usuario.esCompletado(desafioSinCompletar));
 	}
+
+	//@Test 
+	//void testPorcentajeCompletitudGeneral(){
+		//assertEquals(0,usuario.porcentajeCompletitodGeneral(proyecto));
+	//}
 
 }
