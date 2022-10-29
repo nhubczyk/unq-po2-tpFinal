@@ -6,8 +6,9 @@ public class recomendacionPreferencia extends Recomendacion{
 
 	@Override
 	public List<Desafio> desafiosRecomendadosSegunValor(Usuario usuario, Proyecto proyecto) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.nDesafiosConMayorCoincidencia(20, proyecto.getDesafios(), usuario).stream()
+				.limit(5)
+				.toList();
 	}
 	
 }

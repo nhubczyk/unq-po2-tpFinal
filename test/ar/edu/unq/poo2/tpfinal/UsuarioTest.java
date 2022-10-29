@@ -30,11 +30,10 @@ class UsuarioTest {
 
 	}
 
-
-
 	@Test
 	void testDesafioCompletitud() {
-		assertEquals(10.0, desafioSinCompletar.getPorcentajeCompletitud());
+		desafioSinCompletar.setPorcentajeCompletitud(70);
+		assertEquals(70.0, desafioSinCompletar.getPorcentajeCompletitud());
 	}
 
 	@Test
@@ -43,10 +42,25 @@ class UsuarioTest {
 		assertEquals(recomendacionFavorita, usuario.getMetodoRecomendacion());
 	}
 
+	@Test
+	void testPorcentajeCompletitudGeneral() {
+		proyecto.addDesafio(desafioSinAsignar);
+		assertEquals(0, usuario.porcentajeCompletitudGeneral(proyecto));
+	}
 
-	//@Test 
-	//void testPorcentajeCompletitudGeneral(){
-		//assertEquals(0,usuario.porcentajeCompletitodGeneral(proyecto));
-	//}
-
+	@Test
+	void testPorcentajeCompletitudGeneralCambiado() {
+		proyecto.addDesafio(desafioSinCompletar);
+		proyecto.addDesafio(desafioSinAsignar);
+		desafioSinCompletar.setPorcentajeCompletitud(80);
+		assertEquals(40, usuario.porcentajeCompletitudGeneral(proyecto));
+	}
+/*	
+	@Test 
+	void testPreferencias() {
+		var PreferenciasUsuario preferencias = (1,2,3,desafioSinCompletar);
+		usuario.setPreferenciasUsuario(1, 2, 3, desafioSinCompletar);
+		assertEquals(usuario.preferenciasUsuario,(1,2,3,desafioSinCompletar));
+	}
+*/
 }

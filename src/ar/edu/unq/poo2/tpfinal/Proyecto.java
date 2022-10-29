@@ -10,6 +10,7 @@ public class Proyecto {
 	private List<Categoria> categorias = new ArrayList<Categoria>();
 	private List<Muestra> muestras = new ArrayList<Muestra>();
 	private List<Usuario> participantes = new ArrayList<Usuario>();
+	private List<Desafio> desafios = new ArrayList<Desafio>();
 	
 	public Proyecto(String nom, String descripcion) {
 		this.setNombre(nom);
@@ -58,6 +59,14 @@ public class Proyecto {
 	
 	public List<Muestra> getMuestras() {
 		return muestras;
+	}
+
+	public List<Desafio> getDesafios() {
+		return desafios;
+	}
+	
+	public void addDesafio(Desafio desafio) {
+		desafios.add(desafio);
 	}
 	
 	

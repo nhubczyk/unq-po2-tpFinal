@@ -10,14 +10,5 @@ public class DesafioUsuario extends Desafio {
 		return momentoSuperacion;
 	}
 
-	public float getPorcentajeCompletitud() {
-		
-		return 10;
-	}
-
-	public LocalDate momentoSuperacion() {
-		// TODO Auto-generated method stub
-		return momentoSuperacion;
-	}
 
 }
