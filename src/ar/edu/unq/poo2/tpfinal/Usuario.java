@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Usuario {
-	private String nombre;
 	private Recomendacion metodoRecomendacion;
+	private PreferenciasUsuario preferencias;
 
 	private List<DesafioUsuario> desafiosCompletos = new ArrayList<DesafioUsuario>();
 
@@ -14,9 +14,6 @@ public class Usuario {
 		return desafio.getPorcentajeCompletitud();
 	}
 
-	public boolean esCompletado(Desafio desafio) {
-		return desafiosCompletos.contains(desafio);
-	}
 
 	public List<DesafioUsuario> getDesafiosCompletos() {
 		return desafiosCompletos;
@@ -44,6 +41,10 @@ public class Usuario {
 			cantidadDePorcentaje += desafioUsuario.getPorcentajeCompletitud();
 		}
 		return cantidadDePorcentaje;
+	}
+	
+	public PreferenciasUsuario getPreferenciasUsuario() {
+		return preferencias;
 	}
 
 }

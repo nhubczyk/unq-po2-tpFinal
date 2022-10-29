@@ -30,10 +30,7 @@ class UsuarioTest {
 
 	}
 
-	@Test
-	void testElDesafioFueSuperado() {
-		assertTrue(usuario.esCompletado(desafioCompletado));
-	}
+
 
 	@Test
 	void testDesafioCompletitud() {
@@ -46,11 +43,6 @@ class UsuarioTest {
 		assertEquals(recomendacionFavorita, usuario.getMetodoRecomendacion());
 	}
 
-	@Test
-	void testSuperoElDesafio() {
-		usuario.superoElDesafio(desafioSinCompletar);
-		assertTrue(usuario.esCompletado(desafioSinCompletar));
-	}
 
 	//@Test 
 	//void testPorcentajeCompletitudGeneral(){
