@@ -2,6 +2,10 @@ package ar.edu.unq.poo2.tpfinal;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,6 +19,10 @@ class ProyectoTestCase {
 	private Usuario user2;
 	private Muestra muestra; 
 	private Muestra muestra2;
+	private Desafio desafio;
+	private Desafio desafio2;
+	private Desafio desafio3;
+	private Recomendacion recomendacion;
 	
 	@BeforeEach
 	public void setUp() {
@@ -26,6 +34,15 @@ class ProyectoTestCase {
 		user2 = mock(Usuario.class);
 		muestra = mock(Muestra.class);
 		muestra2 = mock(Muestra.class);
+		desafio = mock(Desafio.class);
+		desafio2 = mock(Desafio.class);
+		desafio3 = mock(Desafio.class);
+		recomendacion = mock(Recomendacion.class);
+		
+		List<Desafio> listaDesafios = Arrays.asList(desafio, desafio2);
+		
+		when(user.getMetodoRecomendacion()).thenReturn(recomendacion);
+		when(recomendacion.desafiosRecomendadosSegunValor(user, proyecto)).thenReturn(listaDesafios);
 	}
 	
 	@Test
@@ -88,6 +105,16 @@ class ProyectoTestCase {
 	void testNoListadoDeMuestra() {
 		proyecto.addMuestra(muestra);
 		assertFalse(proyecto.getMuestras().contains(muestra2));
+	}
+	
+	@Test
+	void testGetRecomendaciones() {
+		assertTrue(proyecto.getRecomendaciones(user).contains(desafio));
+	}
+	
+	@Test
+	void testNotGetRecomendaciones() {
+		assertFalse(proyecto.getRecomendaciones(user).contains(desafio3));
 	}
 
 }

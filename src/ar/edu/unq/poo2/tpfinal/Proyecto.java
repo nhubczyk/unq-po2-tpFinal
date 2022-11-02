@@ -69,5 +69,7 @@ public class Proyecto {
 		desafios.add(desafio);
 	}
 	
-	
+	public List<Desafio> getRecomendaciones(Usuario user) {
+		return user.getMetodoRecomendacion().desafiosRecomendadosSegunValor(user, this);
+	}
 }

@@ -17,4 +17,9 @@ public class CienciaParticipativa {
 	public Boolean tieneElElemento(Proyecto proyecto) {
 		return proyectos.contains(proyecto);
 	}
+	
+	public List<Proyecto> filtrarProyectos(Filtro filtro) {
+		return filtro.cumplenFiltro(proyectos);	
+	}
+	
 }
