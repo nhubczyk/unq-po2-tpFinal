@@ -2,7 +2,9 @@ package ar.edu.unq.poo2.tpfinal;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.BeforeAll;
+import java.time.LocalDate;
+import java.time.Month;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,21 +14,27 @@ class UsuarioTest {
 	private DesafioUsuario desafioCompletado;
 	private Desafio desafioSinAsignar;
 	private DesafioUsuario desafioSinCompletar;
-	private recomendacionFavoritos recomendacionFavorita;
-
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-
-	}
+	private RecomendacionFavoritos recomendacionFavorita;
+	private RecomendacionPreferencia recomendacionPreferencia;
+	private PreferenciasUsuario preferenciasActuales;
+	private PreferenciasUsuario preferencias2;
+	private LocalDate superacion;
 
 	@BeforeEach
 	void setUp() {
 		usuario = new Usuario();
-		usuario.superoElDesafio(desafioCompletado);
 		desafioSinCompletar = new DesafioUsuario();
-		recomendacionFavorita = new recomendacionFavoritos();
-		proyecto = new Proyecto("POO2", "nashe");
 		desafioSinAsignar = new Desafio();
+		desafioCompletado = new DesafioUsuario();
+		proyecto = new Proyecto("POO2", "Programacion orientada a objetos 2");
+		preferenciasActuales = new PreferenciasUsuario();
+		preferencias2 = new PreferenciasUsuario();
+		usuario.superoElDesafio(desafioCompletado);
+		recomendacionFavorita = new RecomendacionFavoritos();
+		recomendacionPreferencia = new RecomendacionPreferencia();
+		desafioSinCompletar.setPorcentajeCompletitud(80);
+		superacion = LocalDate.now();
+		desafioCompletado.setMomentoSuperacion(superacion);
 
 	}
 
@@ -41,6 +49,29 @@ class UsuarioTest {
 		usuario.setMetodoDeRecomendacion(recomendacionFavorita);
 		assertEquals(recomendacionFavorita, usuario.getMetodoRecomendacion());
 	}
+	
+	@Test
+	void testGetMetodoRecomendacion() {
+		usuario.setMetodoDeRecomendacion(recomendacionFavorita);
+		assertNotEquals(usuario.getMetodoRecomendacion(), recomendacionPreferencia);
+	}
+
+	@Test
+	void testSuperoElDesafio() {
+		usuario.superoElDesafio(desafioCompletado);
+		assertTrue(usuario.getDesafiosCompletos().contains(desafioCompletado));
+	}
+
+	@Test
+	void testMomentoSuperacionVerdadero() {
+		assertEquals(LocalDate.now(), usuario.getMomentoSuperacion(desafioCompletado));
+	}
+
+	@Test
+	void testMomentoSuperacion() {
+
+		assertNotEquals(LocalDate.of(2022, Month.NOVEMBER, 1), usuario.getMomentoSuperacion(desafioCompletado));
+	}
 
 	@Test
 	void testPorcentajeCompletitudGeneral() {
@@ -49,18 +80,22 @@ class UsuarioTest {
 	}
 
 	@Test
-	void testPorcentajeCompletitudGeneralCambiado() {
+	void testPorcentajeCompletitudGeneralOtraVariedad() {
 		proyecto.addDesafio(desafioSinCompletar);
 		proyecto.addDesafio(desafioSinAsignar);
-		desafioSinCompletar.setPorcentajeCompletitud(80);
 		assertEquals(40, usuario.porcentajeCompletitudGeneral(proyecto));
 	}
-/*	
-	@Test 
+
+	@Test
 	void testPreferencias() {
-		var PreferenciasUsuario preferencias = (1,2,3,desafioSinCompletar);
-		usuario.setPreferenciasUsuario(1, 2, 3, desafioSinCompletar);
-		assertEquals(usuario.preferenciasUsuario,(1,2,3,desafioSinCompletar));
+		usuario.setPreferenciasUsuario(preferenciasActuales);
+		assertNotEquals(usuario.getPreferenciasUsuario(), preferencias2);
 	}
-*/
+
+	@Test
+	void testPreferenciasVerdadero() {
+		usuario.setPreferenciasUsuario(preferenciasActuales);
+		assertEquals(usuario.getPreferenciasUsuario(), preferenciasActuales);
+	}
+
 }

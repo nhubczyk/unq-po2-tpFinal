@@ -7,16 +7,18 @@ import java.util.List;
 public class Usuario {
 	private Recomendacion metodoRecomendacion;
 	private PreferenciasUsuario preferenciasActuales;
-
 	private List<DesafioUsuario> desafiosCompletos = new ArrayList<DesafioUsuario>();
 
 	public float porcentajeCompletitud(DesafioUsuario desafio) {
 		return desafio.getPorcentajeCompletitud();
 	}
 
-
 	public List<DesafioUsuario> getDesafiosCompletos() {
 		return desafiosCompletos;
+	}
+
+	public void superoElDesafio(DesafioUsuario desafioCompletado) {
+		desafiosCompletos.add(desafioCompletado);
 	}
 
 	public Recomendacion setMetodoDeRecomendacion(Recomendacion metodoUtilizado) {
@@ -27,11 +29,7 @@ public class Usuario {
 		return metodoRecomendacion;
 	}
 
-	public void superoElDesafio(DesafioUsuario desafioCompletado) {
-		desafiosCompletos.add(desafioCompletado);
-	}
-
-	public LocalDate momentoSuperacion(DesafioUsuario desafio) {
+	public LocalDate getMomentoSuperacion(DesafioUsuario desafio) {
 		return desafio.getMomentoSuperacion();
 	}
 
@@ -42,18 +40,12 @@ public class Usuario {
 		}
 		return cantidadDePorcentaje / proyecto.getDesafios().size();
 	}
-	
+
 	public PreferenciasUsuario getPreferenciasUsuario() {
 		return preferenciasActuales;
 	}
-	
-	public void setPreferenciasUsuario(int muestrasPreferencia, int dificultadPreferida,
-			int recompensaPreferida,DesafioUsuario desafioPreferido) {
-		preferenciasActuales.setCantidadMuestras( muestrasPreferencia);
-		preferenciasActuales.setDificultad(dificultadPreferida);
-		preferenciasActuales.setRecompensaPreferida(recompensaPreferida);
-		preferenciasActuales.setDesafioPreferido(desafioPreferido);
-	}
-	
 
+	public void setPreferenciasUsuario(PreferenciasUsuario preferencias) {
+		preferenciasActuales = preferencias;
+	}
 }

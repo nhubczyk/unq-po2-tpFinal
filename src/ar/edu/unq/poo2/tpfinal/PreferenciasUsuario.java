@@ -1,25 +1,25 @@
 package ar.edu.unq.poo2.tpfinal;
 
 public class PreferenciasUsuario {
-	int cantidadMuestras;
+	int cantidadMuestras=0;
 	int dificultad;
 	int recompensaPreferida;
 	Desafio desafioPreferido;
 
-	public void setCantidadMuestras(int cantidadMuestras) {
-		this.cantidadMuestras = cantidadMuestras;
+	public void setCantidadMuestras(int cantidadMuestrasNueva) {
+		cantidadMuestras = cantidadMuestrasNueva;
 	}
 
-	public void setDificultad(int dificultad) {
-		this.dificultad = dificultad;
+	public void setDificultad(int dificultadNueva) {
+		dificultad = dificultadNueva;
 	}
 
-	public void setRecompensaPreferida(int recompensaPreferida) {
-		this.recompensaPreferida = recompensaPreferida;
+	public void setRecompensaPreferida(int recompensaPreferidaNueva) {
+		recompensaPreferida = recompensaPreferidaNueva;
 	}
 
-	public void setDesafioPreferido(Desafio desafioPreferido) {
-		this.desafioPreferido = desafioPreferido;
+	public void setDesafioPreferido(Desafio desafioPreferidoNueva) {
+		desafioPreferido = desafioPreferidoNueva;
 	}
 
 	public Desafio getDesafioPreferido() {

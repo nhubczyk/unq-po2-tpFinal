@@ -9,6 +9,10 @@ public class DesafioUsuario extends Desafio {
 	public LocalDate getMomentoSuperacion() {
 		return momentoSuperacion;
 	}
+	
+	public void setMomentoSuperacion(LocalDate fecha) {
+		momentoSuperacion = fecha;
+	}
 
 
 }

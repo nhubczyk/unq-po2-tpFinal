@@ -22,7 +22,6 @@ public class Desafio {
 	}
 
 	public int getCantidadMuestrasRecolectadas() {
-		// TODO Auto-generated method stub
 		return cantidadMuestrasNecesarias - 3;
 	}
 
