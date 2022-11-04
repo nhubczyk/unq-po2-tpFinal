@@ -17,11 +17,4 @@ public class Muestra {
 		return fechaYHora;
 	}
 
-	public Coordenada getCoordenada() {
-		return coordenada;
-	}
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
 }
