@@ -4,7 +4,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class RecomendacionFavoritos extends Recomendacion {
-
+/*
 	@Override
 	public List<Desafio> desafiosRecomendadosSegunValor(Usuario usuario, Proyecto proyecto) {
 		return this.nDesafiosConMayorCoincidencia(20, proyecto.getDesafios(), usuario).stream().limit(5).toList();
@@ -27,10 +27,9 @@ public class RecomendacionFavoritos extends Recomendacion {
 	
 	}
 }
+*/
 
 
-/*
- public class RecomendacionFavoritos extends Recomendacion {
 
 	@Override
 	public List<Desafio> desafiosRecomendadosSegunValor(Usuario usuario, Proyecto proyecto) {
@@ -54,4 +53,4 @@ public class RecomendacionFavoritos extends Recomendacion {
 	}
 
 }
- */
+ 

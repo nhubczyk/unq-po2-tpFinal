@@ -1,7 +1,7 @@
 package ar.edu.unq.poo2.tpfinal;
 
 public class PreferenciasUsuario {
-	int cantidadMuestras=0;
+	int cantidadMuestras;
 	int dificultad;
 	int recompensaPreferida;
 	Desafio desafioPreferido;

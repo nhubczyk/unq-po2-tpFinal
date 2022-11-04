@@ -4,12 +4,13 @@ import java.util.Comparator;
 import java.util.List;
 
 public class RecomendacionPreferencia extends Recomendacion {
-//lo hago asi pq no me quiere compilar
+/*lo hago asi pq no me quiere compilar
 	@Override
 	public List<Desafio> desafiosRecomendadosSegunValor(Usuario usuario, Proyecto proyecto) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+*/
 /* 
 	@Override
 	public List<Desafio> desafiosRecomendadosSegunValor(Usuario usuario, Proyecto proyecto) {
@@ -27,10 +28,8 @@ public class RecomendacionPreferencia extends Recomendacion {
 	}
 */
 	
-}
 
-/* 
- public class RecomendacionPreferencia extends Recomendacion {
+
 
 	@Override
 	public List<Desafio> desafiosRecomendadosSegunValor(Usuario usuario, Proyecto proyecto) {
@@ -53,4 +52,4 @@ public class RecomendacionPreferencia extends Recomendacion {
 				+ Math.abs(desafio.getRecompensa() - preferencias.getRecompensaPreferida());
 	}
 }
- */ 
+ 

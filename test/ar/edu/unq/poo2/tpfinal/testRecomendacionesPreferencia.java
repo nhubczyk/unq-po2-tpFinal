@@ -1,17 +1,14 @@
 package ar.edu.unq.poo2.tpfinal;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 
-class testRecomendacionesFavoritos {
+class testRecomendacionesPreferencia {
 	private Proyecto proyecto;
 	private Desafio desafio1;
 	private Desafio desafio2;
@@ -25,7 +22,7 @@ class testRecomendacionesFavoritos {
 	private Desafio desafio10;
 	private Usuario user;
 	private List<Desafio> desafiosRecomendados;
-	private RecomendacionFavoritos recomendacion;
+	private RecomendacionPreferencia recomendacion;
 	private PreferenciasUsuario preferencias;
 	private List<Desafio> desafiosNoRecomendados;
 
@@ -49,7 +46,7 @@ class testRecomendacionesFavoritos {
 		desafiosNoRecomendados.add(desafio6);
 		desafiosNoRecomendados.add(desafio8);
 		desafiosNoRecomendados.add(desafio10);
-		recomendacion = new RecomendacionFavoritos();
+		recomendacion = new RecomendacionPreferencia();
 		preferencias = new PreferenciasUsuario();
 		user.setPreferenciasUsuario(preferencias);
 		proyecto.addDesafio(desafio1);
@@ -117,13 +114,12 @@ class testRecomendacionesFavoritos {
 	}
 
 	@Test
-	void testDesafiosRecomendadosTrue() {
+	void test() {
 		assertEquals(proyecto.getRecomendaciones(user), desafiosRecomendados);
-
 	}
-
+	
 	@Test
-	void testDesafiosRecomendadosFalse() {
+	void testfalse() {
 		assertNotEquals(proyecto.getRecomendaciones(user), desafiosNoRecomendados);
 	}
 

@@ -4,7 +4,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public abstract class Recomendacion {
-	
+/*
 	
 	public abstract List<Desafio> desafiosRecomendadosSegunValor(Usuario usuario, Proyecto proyecto);
 
@@ -23,6 +23,8 @@ public abstract class Recomendacion {
 	}
 }
 
+*/
+	
 /*
  estuve pensando en como hacer esto de otra manera ya que siento que tiene un error ya que
  una de las formas de calcular necesita de las preferencias, que es la que implementamos
@@ -33,12 +35,11 @@ public abstract class Recomendacion {
 
 //quedaria asi aunque siento que repite mucho codigo y va a ser algo que señalen los profes
 
-/*
-public abstract class Recomendacion {
+
 	public abstract List<Desafio> desafiosRecomendadosSegunValor(Usuario usuario, Proyecto proyecto);
 
 	public abstract List<Desafio> nDesafiosConMayorCoincidencia(int cantidad, List<Desafio> desafiosNoAceptados,
 			Usuario usuario);
 
 } 
- */
+ 
