@@ -6,6 +6,7 @@ import java.util.List;
 
 public class DesafioUsuario  {
 	private EstadoDeDesafio estado;
+
 	private Desafio desafioConcreto;
 	private List<Muestra> muestras = new ArrayList<Muestra>();
 	
@@ -17,11 +18,11 @@ public class DesafioUsuario  {
 	public LocalDate getMomentoSuperacion() {
 		return estado.getMomentoSuperacion();
 	}
-	
 
 	public void setEstado(EstadoDeDesafio estado) {
-		this.estado=estado;
+		this.estado = estado;
 	}
+
 
 	public int getCantidadMuestrasNecesarias() {
 		return this.desafioConcreto.getCantidadMuestras();
@@ -34,6 +35,5 @@ public class DesafioUsuario  {
 	public float getPorcentajeCompletitud() {
 		return estado.porcentajeCompletitud();
 	}
-
 
 }
