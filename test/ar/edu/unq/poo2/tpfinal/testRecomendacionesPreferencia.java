@@ -117,7 +117,7 @@ class testRecomendacionesPreferencia {
 	void test() {
 		assertEquals(proyecto.getRecomendaciones(user), desafiosRecomendados);
 	}
-	
+
 	@Test
 	void testfalse() {
 		assertNotEquals(proyecto.getRecomendaciones(user), desafiosNoRecomendados);

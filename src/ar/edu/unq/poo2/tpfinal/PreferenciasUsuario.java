@@ -22,7 +22,6 @@ public class PreferenciasUsuario implements Puntuable {
 		desafioPreferido = desafioPreferidoNueva;
 	}
 
-
 	public int diferenciaConDesafio(Desafio desafio) {
 		return Math.abs(desafio.getDificultad() - this.getDificultad())
 				+ Math.abs(desafio.getCantidadMuestrasRecolectadas() - this.getCantidadMuestras())
