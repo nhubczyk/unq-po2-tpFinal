@@ -1,21 +1,15 @@
 package ar.edu.unq.poo2.tpfinal;
 
-import java.util.List;
 
-public class FiltroOr extends Filtro {
-
-	public List<Filtro> subFiltros;
+public class FiltroOr extends FiltroCompuesto {
 	
-	public FiltroOr(List<Filtro> subFiltros) {
-		this.subFiltros = subFiltros;
+	public FiltroOr(Filtro subFiltro1, Filtro subFiltro2) {
+		super(subFiltro1, subFiltro2);
 	}
 	
 	@Override
 	public boolean cumpleFiltro(Proyecto p) {
-		for(Filtro f: subFiltros) {
-			if (f.cumpleFiltro(p)) return true;
-		}
-		return false;
+		return (subFiltro1.cumpleFiltro(p) || subFiltro2.cumpleFiltro(p));
 	}
 
 }
