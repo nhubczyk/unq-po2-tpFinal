@@ -27,7 +27,8 @@ class MuestraTestCase {
 	
 	@Test
 	void testNotGetFechaYHora() {
-		assertNotEquals(LocalDate.now().getDayOfMonth() == 1, muestra.getFechaYHora());
+		assertNotEquals(LocalDate.now().plusDays(5), muestra.getFechaYHora());
+		assertNotEquals(LocalDate.now().minusMonths(3), muestra.getFechaYHora());
 	}
 
 }

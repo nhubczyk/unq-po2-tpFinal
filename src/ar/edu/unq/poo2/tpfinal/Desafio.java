@@ -1,12 +1,10 @@
 package ar.edu.unq.poo2.tpfinal;
 
-public class Desafio {
-	//se crea la clase para q compile usuario
+public class Desafio implements Puntuable {
 	private int cantidadMuestrasNecesarias;
 	private float porcentaje;
 	private int dificultad;
 	private int recompensa;
-	
 
 	public void setDificultad(int dificultad) {
 		this.dificultad = dificultad;
@@ -16,37 +14,41 @@ public class Desafio {
 		this.recompensa = recompensa;
 	}
 
-	public int getDificultad() {
-		// TODO Auto-generated method stub
-		return dificultad;
-	}
-
-	public int getCantidadMuestrasRecolectadas() {
-		return cantidadMuestrasNecesarias - 3;
-	}
-
-	public int getCantidadMuestrasNecesarias() {
-		return cantidadMuestrasNecesarias;
+	public float setPorcentajeCompletitud(float cantidad) {
+		return porcentaje = cantidad;
 	}
 
 	public void setCantidadMuestrasNecesarias(int cantidadMuestrasNecesarias) {
 		this.cantidadMuestrasNecesarias = cantidadMuestrasNecesarias;
 	}
 
-
-	public int getRecompensa() {
-		// TODO Auto-generated method stub
-		return recompensa;
+	public int getCantidadMuestrasRecolectadas() {
+		return cantidadMuestrasNecesarias - 3;
 	}
 
 	public float getPorcentajeCompletitud() {
-		// TODO Auto-generated method stub
 		return porcentaje;
 	}
-	
-	public float setPorcentajeCompletitud(float cantidad) {
-		return porcentaje = cantidad;
+
+	@Override
+	public int getRecompensa() {
+		return recompensa;
 	}
-	
-	
+
+	@Override
+	public int getDificultad() {
+		return dificultad;
+	}
+
+	@Override
+	public int getCantidadMuestras() {
+		return cantidadMuestrasNecesarias;
+	}
+
+	public int similitudConDesafio(Desafio desafio) {
+		return Math.abs(desafio.getDificultad() - this.getDificultad())
+				+ Math.abs(desafio.getCantidadMuestrasRecolectadas() - this.getCantidadMuestras())
+				+ Math.abs(desafio.getRecompensa() - this.getRecompensa());
+	}
+
 }

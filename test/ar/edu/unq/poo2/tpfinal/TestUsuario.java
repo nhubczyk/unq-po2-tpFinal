@@ -8,7 +8,7 @@ import java.time.Month;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class UsuarioTest {
+class TestUsuario {
 	private Proyecto proyecto;
 	private Usuario usuario;
 	private DesafioUsuario desafioCompletado;
