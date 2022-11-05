@@ -22,9 +22,6 @@ public class Desafio implements Puntuable {
 		this.cantidadMuestrasNecesarias = cantidadMuestrasNecesarias;
 	}
 
-	public int getCantidadMuestrasRecolectadas() {
-		return cantidadMuestrasNecesarias - 3;
-	}
 
 	public float getPorcentajeCompletitud() {
 		return porcentaje;
@@ -47,7 +44,7 @@ public class Desafio implements Puntuable {
 
 	public int similitudConDesafio(Desafio desafio) {
 		return Math.abs(desafio.getDificultad() - this.getDificultad())
-				+ Math.abs(desafio.getCantidadMuestrasRecolectadas() - this.getCantidadMuestras())
+				+ Math.abs(desafio.getCantidadMuestras() - this.getCantidadMuestras())
 				+ Math.abs(desafio.getRecompensa() - this.getRecompensa());
 	}
 
