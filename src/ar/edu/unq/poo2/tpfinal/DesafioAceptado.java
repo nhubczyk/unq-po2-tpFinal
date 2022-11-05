@@ -1,6 +1,12 @@
 package ar.edu.unq.poo2.tpfinal;
 
 public abstract class DesafioAceptado extends EstadoDeDesafio {
+	
+	public DesafioAceptado(DesafioUsuario desafio) {
+		super(desafio);
+	}
+
+
 	protected int votoGuardado;
 	
 	

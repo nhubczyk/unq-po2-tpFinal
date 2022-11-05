@@ -5,7 +5,8 @@ import java.time.LocalDate;
 public class DesafioCompletado extends DesafioAceptado {
 	private LocalDate momentoSuperacion;
 
-	public DesafioCompletado(int voto) {
+	public DesafioCompletado(DesafioUsuario desafio, int voto) {
+		super(desafio);
 		this.momentoSuperacion=LocalDate.now();
 		this.votoGuardado=voto;
 	}

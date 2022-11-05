@@ -12,7 +12,7 @@ public class DesafioUsuario  {
 	
 	public DesafioUsuario(Desafio desafioConcreto) {
 		this.desafioConcreto=desafioConcreto;
-		this.estado=new DesafioNoAceptado();
+		this.estado=new DesafioNoAceptado(this);
 	}
 	
 	public LocalDate getMomentoSuperacion() {

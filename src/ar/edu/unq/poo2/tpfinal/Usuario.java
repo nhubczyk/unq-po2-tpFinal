@@ -8,7 +8,8 @@ public class Usuario {
 	private Recomendacion metodoRecomendacion;
 	private PreferenciasUsuario preferenciasActuales;
 	private List<DesafioUsuario> desafiosCompletos = new ArrayList<DesafioUsuario>();
-
+	// TODO CAMBIAR DESAFIOS COMPLETOS A DESAFIOS.
+	
 	public float porcentajeCompletitud(DesafioUsuario desafio) {
 		return desafio.getPorcentajeCompletitud();
 	}

@@ -4,6 +4,10 @@ import java.time.LocalDate;
 
 public class DesafioNoAceptado extends EstadoDeDesafio {
 
+	public DesafioNoAceptado(DesafioUsuario desafio) {
+		super(desafio);
+	}
+
 	@Override
 	public Boolean votarDesafio(int voto) {
 		return false;
@@ -31,7 +35,7 @@ public class DesafioNoAceptado extends EstadoDeDesafio {
 
 	@Override
 	public void aceptarDesafio() {
-		this.desafioUsuario.setEstado(new DesafioActivo());
+		this.desafioUsuario.setEstado(new DesafioActivo(desafioUsuario));
 	}
 
 

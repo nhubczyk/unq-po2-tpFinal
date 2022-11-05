@@ -3,7 +3,11 @@ package ar.edu.unq.poo2.tpfinal;
 import java.time.LocalDate;
 
 public abstract class EstadoDeDesafio {
-	protected DesafioUsuario desafioUsuario;
+	public DesafioUsuario desafioUsuario;
+	
+	public EstadoDeDesafio(DesafioUsuario desafio) {
+		this.desafioUsuario=desafio;
+	}
 	
 	public abstract Boolean votarDesafio(int voto);
 	

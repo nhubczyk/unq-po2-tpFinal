@@ -4,9 +4,13 @@ import java.time.LocalDate;
 
 public class DesafioActivo extends DesafioAceptado {
 
+	public DesafioActivo(DesafioUsuario desafio) {
+		super(desafio);
+	}
+
 	@Override
 	public float porcentajeCompletitud() {
-		return (desafioUsuario.getCantidadMuestrasNecesarias()
+		return  ((float) desafioUsuario.getCantidadMuestrasNecesarias()
 				/ desafioUsuario.getCantidadMuestrasRecolectadas()) 
 				* 100;
 	}
