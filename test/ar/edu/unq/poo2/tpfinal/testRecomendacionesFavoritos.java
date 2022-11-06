@@ -12,8 +12,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
 class testRecomendacionesFavoritos {
-	private RecomendacionFavoritos recomendacion; //SUT
-	private PreferenciasUsuario preferencias;//DOC 
+	private RecomendacionFavoritos recomendacion; // SUT
+	private PreferenciasUsuario preferencias;// DOC
 	private Proyecto proyecto;
 	private Desafio desafio1;
 	private Desafio desafio2;
@@ -79,7 +79,7 @@ class testRecomendacionesFavoritos {
 		desafiosRecomendados.add(desafio5);
 		desafiosRecomendados.add(desafio7);
 		desafiosRecomendados.add(desafio9);
-		
+
 		when(user.getMetodoRecomendacion()).thenReturn(recomendacion);
 		when(user.contieneDesafio(desafio1)).thenReturn(false);
 		when(user.contieneDesafio(desafio2)).thenReturn(false);
@@ -103,8 +103,6 @@ class testRecomendacionesFavoritos {
 		when(preferencias.diferenciaConDesafio(desafio8)).thenReturn(8);
 		when(preferencias.diferenciaConDesafio(desafio9)).thenReturn(4);
 		when(preferencias.diferenciaConDesafio(desafio10)).thenReturn(41);
-		
-
 
 	}
 
@@ -116,6 +114,21 @@ class testRecomendacionesFavoritos {
 	@Test
 	void testDesafiosRecomendadosFalse() {
 		assertNotEquals(desafiosNoRecomendados, recomendacion.desafiosRecomendadosSegunValor(user, proyecto));
+	}
+
+	@Test
+	void testnDesafiosConMayorCoincidencia() {
+		assertEquals(desafiosRecomendados, recomendacion.nDesafiosConMayorCoincidencia(5, desafios, user));
+	}
+
+	@Test
+	void testDesafiosSinAceptar() {
+		assertEquals(desafios, recomendacion.desafiosSinAceptar(proyecto, user));
+	}
+
+	@Test
+	void testDesafiosSinAceptarFalse() {
+		assertNotEquals(desafiosRecomendados, recomendacion.desafiosSinAceptar(proyecto, user));
 	}
 
 }

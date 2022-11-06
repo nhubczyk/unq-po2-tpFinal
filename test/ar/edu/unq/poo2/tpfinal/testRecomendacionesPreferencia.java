@@ -80,8 +80,6 @@ class testRecomendacionesPreferencia {
 		desafiosRecomendados.add(desafio7);
 		desafiosRecomendados.add(desafio9);
 
-		// when (proyecto.getDesafios()).thenReturn(desafiosRecomendados);
-		//when(proyecto.getRecomendaciones(user)).thenReturn(desafiosRecomendados);
 		when(user.getMetodoRecomendacion()).thenReturn(recomendacion);
 		when(user.contieneDesafio(desafio1)).thenReturn(false);
 		when(user.contieneDesafio(desafio2)).thenReturn(false);
@@ -105,9 +103,7 @@ class testRecomendacionesPreferencia {
 		when(preferencias.diferenciaConDesafio(desafio8)).thenReturn(8);
 		when(preferencias.diferenciaConDesafio(desafio9)).thenReturn(4);
 		when(preferencias.diferenciaConDesafio(desafio10)).thenReturn(41);
-		
-		
-		
+
 	}
 
 	@Test
@@ -117,7 +113,24 @@ class testRecomendacionesPreferencia {
 
 	@Test
 	void testDesafiosRecomendadosFalse() {
-		assertNotEquals(desafiosNoRecomendados, recomendacion.desafiosRecomendadosSegunValor(user, proyecto));;
+		assertNotEquals(desafiosNoRecomendados, recomendacion.desafiosRecomendadosSegunValor(user, proyecto));
+		;
 	}
+	
+	@Test
+	void testnDesafiosConMayorCoincidencia() {
+		assertEquals(desafiosRecomendados, recomendacion.nDesafiosConMayorCoincidencia(5, desafios, user));
+	}
+	
+	@Test
+	void testDesafiosSinAceptar() {
+		assertEquals(desafios, recomendacion.desafiosSinAceptar(proyecto, user));
+	}
+	
+	@Test
+	void testDesafiosSinAceptarFalse() {
+		assertNotEquals(desafiosRecomendados, recomendacion.desafiosSinAceptar(proyecto, user));
+	}
+
 
 }

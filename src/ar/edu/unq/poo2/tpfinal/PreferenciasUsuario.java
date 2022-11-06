@@ -7,19 +7,19 @@ public class PreferenciasUsuario implements Puntuable {
 	Desafio desafioPreferido;
 
 	public void setCantidadMuestras(int cantidadMuestrasNueva) {
-		cantidadMuestras = cantidadMuestrasNueva;
+		this.cantidadMuestras = cantidadMuestrasNueva;
 	}
 
 	public void setDificultad(int dificultadNueva) {
-		dificultad = dificultadNueva;
+		this.dificultad = dificultadNueva;
 	}
 
 	public void setRecompensaPreferida(int recompensaPreferidaNueva) {
-		recompensaPreferida = recompensaPreferidaNueva;
+		this.recompensaPreferida = recompensaPreferidaNueva;
 	}
 
 	public void setDesafioPreferido(Desafio desafioPreferidoNueva) {
-		desafioPreferido = desafioPreferidoNueva;
+		this.desafioPreferido = desafioPreferidoNueva;
 	}
 
 	public int diferenciaConDesafio(Desafio desafio) {
@@ -29,22 +29,22 @@ public class PreferenciasUsuario implements Puntuable {
 	}
 
 	public Desafio getDesafioPreferido() {
-		return desafioPreferido;
+		return this.desafioPreferido;
 	}
 
 	@Override
 	public int getRecompensa() {
-		return recompensaPreferida;
+		return this.recompensaPreferida;
 	}
 
 	@Override
 	public int getDificultad() {
-		return dificultad;
+		return this.dificultad;
 	}
 
 	@Override
 	public int getCantidadMuestras() {
-		return cantidadMuestras;
+		return this.cantidadMuestras;
 	}
 
 }

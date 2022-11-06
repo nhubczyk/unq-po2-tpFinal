@@ -15,8 +15,6 @@ class TestUsuario {
 	private DesafioUsuario desafioCompletado;
 	private Desafio desafioSinAsignar;
 	private DesafioUsuario desafioSinCompletar;
-	private Desafio desafio1;
-	private Desafio desafio2;
 	private RecomendacionFavoritos recomendacionFavorita;
 	private RecomendacionPreferencia recomendacionPreferencia;
 	private PreferenciasUsuario preferenciasActuales;
@@ -34,8 +32,7 @@ class TestUsuario {
 		preferencias2 = new PreferenciasUsuario();
 		recomendacionFavorita = mock(RecomendacionFavoritos.class);
 		recomendacionPreferencia = mock(RecomendacionPreferencia.class);
-		estado = new DesafioActivo(desafioSinCompletar);
-		usuario.getDesafios().add(desafioCompletado);
+		estado = mock(DesafioActivo.class);
 
 		when(desafioSinCompletar.getPorcentajeCompletitud()).thenReturn(70.0f);
 		when(desafioSinCompletar.getEstado()).thenReturn(estado);
@@ -46,6 +43,7 @@ class TestUsuario {
 		when(usuario.getMomentoSuperacion(desafioCompletado)).thenReturn(LocalDate.now());
 		when(usuario.getMetodoRecomendacion()).thenReturn(recomendacionFavorita);
 		when(usuario.porcentajeCompletitudGeneral(proyecto)).thenReturn((float) 80.5);
+		when(estado.getMomentoSuperacion()).thenReturn(LocalDate.now());
 	}
 
 	@Test
@@ -73,12 +71,11 @@ class TestUsuario {
 		usuario.setMetodoDeRecomendacion(recomendacionFavorita);
 		assertNotEquals(usuario.getMetodoRecomendacion(), recomendacionPreferencia);
 	}
-/*
-	@Test
-	void testSuperoElDesafio() {
-		assertTrue(usuario.getDesafios().contains(desafioCompletado));
-	}
-*/
+
+	/*
+	 * @Test void testSuperoElDesafio() {
+	 * assertTrue(usuario.getDesafios().contains(desafioCompletado)); }
+	 */
 	@Test
 	void testMomentoSuperacionVerdadero() {
 		assertEquals(LocalDate.now(), usuario.getMomentoSuperacion(desafioCompletado));
