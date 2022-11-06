@@ -1,6 +1,8 @@
 package ar.edu.unq.poo2.tpfinal;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,80 +18,80 @@ class testPreferenciasUsuario {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		usuario = new Usuario();
-		desafio = new Desafio();
-		desafio2 = new Desafio();
-		preferencias = new PreferenciasUsuario();
-		usuario.setPreferenciasUsuario(preferencias);
-		dificultad = 3;
-		cantidadMuestras = 3;
-		recompensa = 3;
-		preferencias.setCantidadMuestras(cantidadMuestras);
-		preferencias.setDificultad(dificultad);
-		preferencias.setDesafioPreferido(desafio);
-		preferencias.setRecompensaPreferida(recompensa);
-		desafio.setCantidadMuestrasNecesarias(4);
-		desafio.setDificultad(1);
-		desafio.setRecompensa(1);
+		usuario = mock(Usuario.class);
+		desafio = mock(Desafio.class);
+		desafio2 = mock(Desafio.class);
+		preferencias = mock(PreferenciasUsuario.class);
+
+		when(preferencias.getCantidadMuestras()).thenReturn(3);
+		when(preferencias.getDificultad()).thenReturn(3);
+		when(preferencias.getRecompensa()).thenReturn(3);
+		when(preferencias.getDesafioPreferido()).thenReturn(desafio);
+		when(desafio.getCantidadMuestras()).thenReturn(4);
+		when(desafio.getDificultad()).thenReturn(1);
+		when(desafio.getRecompensa()).thenReturn(1);
+		when(usuario.getPreferenciasUsuario()).thenReturn(preferencias);
+		when(preferencias.diferenciaConDesafio(desafio)).thenReturn(5);
+
 	}
 
 	@Test
 	void testMuestrasTrue() {
 
-		assertEquals(usuario.getPreferenciasUsuario().getCantidadMuestras(), cantidadMuestras);
+		assertEquals(preferencias.getCantidadMuestras(), 3);
 	}
 
 	@Test
 	void testMuestrasFalse() {
-		assertNotEquals(usuario.getPreferenciasUsuario().getCantidadMuestras(), 1);
+		assertNotEquals(preferencias.getCantidadMuestras(), 1);
 	}
 
 	@Test
 	void testDificultadTrue() {
 
-		assertEquals(usuario.getPreferenciasUsuario().getDificultad(), dificultad);
+		assertEquals(preferencias.getDificultad(), 3);
 	}
 
 	@Test
 	void testDificultadFalse() {
 
-		assertNotEquals(usuario.getPreferenciasUsuario().getDificultad(), 5);
+		assertNotEquals(preferencias.getDificultad(), 5);
 	}
 
 	@Test
 	void testRecompensaTrue() {
 
-		assertEquals(usuario.getPreferenciasUsuario().getRecompensa(), recompensa);
+		assertEquals(preferencias.getRecompensa(), 3);
 
 	}
 
 	@Test
 	void testRecompensaFalse() {
 
-		assertNotEquals(usuario.getPreferenciasUsuario().getRecompensa(), 1);
+		assertNotEquals(preferencias.getRecompensa(), 1);
 
 	}
 
 	@Test
 	void testDesafioTrue() {
 
-		assertEquals(usuario.getPreferenciasUsuario().getDesafioPreferido(), desafio);
+		assertEquals(preferencias.getDesafioPreferido(), desafio);
 	}
 
 	@Test
 	void testDesafioFalse() {
 
-		assertNotEquals(usuario.getPreferenciasUsuario().getDesafioPreferido(), desafio2);
+		assertNotEquals(preferencias.getDesafioPreferido(), desafio2);
 	}
 
 	@Test
 	void testDiferenciaConDesafioTrue() {
-		assertEquals(usuario.getPreferenciasUsuario().diferenciaConDesafio(desafio), 6);
+		assertEquals(preferencias.diferenciaConDesafio(desafio), 5);
 	}
 
 	@Test
 	void testDiferenciaConDesafioFalse() {
-		assertNotEquals(usuario.getPreferenciasUsuario().diferenciaConDesafio(desafio), 3);
+		assertNotEquals(preferencias.diferenciaConDesafio(desafio), 3);
 	}
 
 }

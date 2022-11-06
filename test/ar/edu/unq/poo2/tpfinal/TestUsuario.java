@@ -1,6 +1,7 @@
 package ar.edu.unq.poo2.tpfinal;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -14,54 +15,70 @@ class TestUsuario {
 	private DesafioUsuario desafioCompletado;
 	private Desafio desafioSinAsignar;
 	private DesafioUsuario desafioSinCompletar;
+	private Desafio desafio1;
+	private Desafio desafio2;
 	private RecomendacionFavoritos recomendacionFavorita;
 	private RecomendacionPreferencia recomendacionPreferencia;
 	private PreferenciasUsuario preferenciasActuales;
 	private PreferenciasUsuario preferencias2;
-	private LocalDate superacion;
+	private EstadoDeDesafio estado;
 
 	@BeforeEach
 	void setUp() {
-		usuario = new Usuario();
-		desafioSinCompletar = new DesafioUsuario();
-		desafioSinAsignar = new Desafio();
-		desafioCompletado = new DesafioUsuario();
-		proyecto = new Proyecto("POO2", "Programacion orientada a objetos 2");
+		usuario = mock(Usuario.class);
+		desafioSinCompletar = mock(DesafioUsuario.class);
+		desafioSinAsignar = mock(Desafio.class);
+		desafioCompletado = mock(DesafioUsuario.class);
+		proyecto = mock(Proyecto.class);
 		preferenciasActuales = new PreferenciasUsuario();
 		preferencias2 = new PreferenciasUsuario();
-		usuario.superoElDesafio(desafioCompletado);
-		recomendacionFavorita = new RecomendacionFavoritos();
-		recomendacionPreferencia = new RecomendacionPreferencia();
-		desafioSinCompletar.setPorcentajeCompletitud(80);
-		superacion = LocalDate.now();
-		desafioCompletado.setMomentoSuperacion(superacion);
+		recomendacionFavorita = mock(RecomendacionFavoritos.class);
+		recomendacionPreferencia = mock(RecomendacionPreferencia.class);
+		estado = new DesafioActivo(desafioSinCompletar);
+		usuario.getDesafios().add(desafioCompletado);
 
+		when(desafioSinCompletar.getPorcentajeCompletitud()).thenReturn(70.0f);
+		when(desafioSinCompletar.getEstado()).thenReturn(estado);
+		when(desafioSinCompletar.getPorcentajeCompletitud()).thenReturn((float) 10);
+		when(desafioSinCompletar.getCantidadMuestrasRecolectadas()).thenReturn(20);
+		when(desafioCompletado.getPorcentajeCompletitud()).thenReturn((float) 100);
+		when(usuario.getPreferenciasUsuario()).thenReturn(preferenciasActuales);
+		when(usuario.getMomentoSuperacion(desafioCompletado)).thenReturn(LocalDate.now());
+		when(usuario.getMetodoRecomendacion()).thenReturn(recomendacionFavorita);
+		when(usuario.porcentajeCompletitudGeneral(proyecto)).thenReturn((float) 80.5);
 	}
 
 	@Test
 	void testDesafioCompletitud() {
-		desafioSinCompletar.setPorcentajeCompletitud(70);
-		assertEquals(70.0, desafioSinCompletar.getPorcentajeCompletitud());
+		assertEquals(100f, desafioCompletado.getPorcentajeCompletitud());
+	}
+
+	@Test
+	void testDesafioCompletitudOtraVariable() {
+		assertEquals(10.0f, desafioSinCompletar.getPorcentajeCompletitud());
+	}
+
+	@Test
+	void testDesafioCompletitudOtraVariable2() {
+		assertEquals(0.0f, desafioSinAsignar.getPorcentajeCompletitud());
 	}
 
 	@Test
 	void testSetMetodoRecomendacion() {
-		usuario.setMetodoDeRecomendacion(recomendacionFavorita);
 		assertEquals(recomendacionFavorita, usuario.getMetodoRecomendacion());
 	}
-	
+
 	@Test
 	void testGetMetodoRecomendacion() {
 		usuario.setMetodoDeRecomendacion(recomendacionFavorita);
 		assertNotEquals(usuario.getMetodoRecomendacion(), recomendacionPreferencia);
 	}
-
+/*
 	@Test
 	void testSuperoElDesafio() {
-		usuario.superoElDesafio(desafioCompletado);
-		assertTrue(usuario.getDesafiosCompletos().contains(desafioCompletado));
+		assertTrue(usuario.getDesafios().contains(desafioCompletado));
 	}
-
+*/
 	@Test
 	void testMomentoSuperacionVerdadero() {
 		assertEquals(LocalDate.now(), usuario.getMomentoSuperacion(desafioCompletado));
@@ -75,15 +92,12 @@ class TestUsuario {
 
 	@Test
 	void testPorcentajeCompletitudGeneral() {
-		proyecto.addDesafio(desafioSinAsignar);
-		assertEquals(0, usuario.porcentajeCompletitudGeneral(proyecto));
+		assertNotEquals(0, usuario.porcentajeCompletitudGeneral(proyecto));
 	}
 
 	@Test
 	void testPorcentajeCompletitudGeneralOtraVariedad() {
-		proyecto.addDesafio(desafioSinCompletar);
-		proyecto.addDesafio(desafioSinAsignar);
-		assertEquals(40, usuario.porcentajeCompletitudGeneral(proyecto));
+		assertEquals(80.5, usuario.porcentajeCompletitudGeneral(proyecto));
 	}
 
 	@Test
@@ -94,7 +108,7 @@ class TestUsuario {
 
 	@Test
 	void testPreferenciasVerdadero() {
-		usuario.setPreferenciasUsuario(preferenciasActuales);
+
 		assertEquals(usuario.getPreferenciasUsuario(), preferenciasActuales);
 	}
 

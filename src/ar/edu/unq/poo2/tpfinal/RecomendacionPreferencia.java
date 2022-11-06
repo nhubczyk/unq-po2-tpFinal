@@ -7,7 +7,7 @@ public class RecomendacionPreferencia extends Recomendacion {
 
 	@Override
 	public List<Desafio> desafiosRecomendadosSegunValor(Usuario usuario, Proyecto proyecto) {
-		return this.nDesafiosConMayorCoincidencia(5, proyecto.getDesafios(), usuario);
+		return this.nDesafiosConMayorCoincidencia(5, this.desafiosSinAceptar(proyecto, usuario), usuario);
 	}
 
 }

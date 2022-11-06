@@ -36,4 +36,12 @@ public class DesafioUsuario  {
 		return estado.porcentajeCompletitud();
 	}
 
+	public Desafio getDesafio() {
+		return desafioConcreto;
+	}
+
+	public Object getEstado() {
+		return estado;
+	}
+
 }

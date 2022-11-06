@@ -7,19 +7,28 @@ import java.util.List;
 public class Usuario {
 	private Recomendacion metodoRecomendacion;
 	private PreferenciasUsuario preferenciasActuales;
-	private List<DesafioUsuario> desafiosCompletos = new ArrayList<DesafioUsuario>();
+	private List<DesafioUsuario> desafios = new ArrayList<DesafioUsuario>();
 	// TODO CAMBIAR DESAFIOS COMPLETOS A DESAFIOS.
-	
+
 	public float porcentajeCompletitud(DesafioUsuario desafio) {
 		return desafio.getPorcentajeCompletitud();
 	}
 
-	public List<DesafioUsuario> getDesafiosCompletos() {
-		return desafiosCompletos;
+	public List<DesafioUsuario> getDesafios() {
+		return desafios;
+	}
+
+	public Boolean contieneDesafio(Desafio desafio) {
+		for (DesafioUsuario desafioUsuario : desafios) {
+			if (desafioUsuario.getDesafio() == desafio) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public void superoElDesafio(DesafioUsuario desafioCompletado) {
-		desafiosCompletos.add(desafioCompletado);
+		desafios.add(desafioCompletado);
 	}
 
 	public Recomendacion setMetodoDeRecomendacion(Recomendacion metodoUtilizado) {

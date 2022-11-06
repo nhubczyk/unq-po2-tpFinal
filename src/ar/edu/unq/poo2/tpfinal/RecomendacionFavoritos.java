@@ -8,7 +8,8 @@ public class RecomendacionFavoritos extends Recomendacion {
 
 	@Override
 	public List<Desafio> desafiosRecomendadosSegunValor(Usuario usuario, Proyecto proyecto) {
-		List<Desafio> desafiosRecomendados = this.nDesafiosConMayorCoincidencia(20, proyecto.getDesafios(), usuario);
+		List<Desafio> desafiosRecomendados = this.nDesafiosConMayorCoincidencia(20,
+				this.desafiosSinAceptar(proyecto, usuario), usuario);
 		return desafiosRecomendados.stream()
 				.sorted(Comparator.comparingInt(
 						d -> d.similitudConDesafio(usuario.getPreferenciasUsuario().getDesafioPreferido())))

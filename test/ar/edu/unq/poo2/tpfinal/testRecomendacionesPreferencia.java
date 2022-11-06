@@ -1,6 +1,7 @@
 package ar.edu.unq.poo2.tpfinal;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +10,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class testRecomendacionesPreferencia {
+	private RecomendacionPreferencia recomendacion;// SUT
+	private PreferenciasUsuario preferencias;// DOC
 	private Proyecto proyecto;
 	private Desafio desafio1;
 	private Desafio desafio2;
@@ -22,24 +25,24 @@ class testRecomendacionesPreferencia {
 	private Desafio desafio10;
 	private Usuario user;
 	private List<Desafio> desafiosRecomendados;
-	private RecomendacionPreferencia recomendacion;
-	private PreferenciasUsuario preferencias;
 	private List<Desafio> desafiosNoRecomendados;
+	private List<Desafio> desafios;
 
 	@BeforeEach
 	void setUp() throws Exception {
-		proyecto = new Proyecto("Poo2", "Objetos 2");
-		desafio1 = new Desafio();
-		desafio2 = new Desafio();
-		desafio3 = new Desafio();
-		desafio4 = new Desafio();
-		desafio5 = new Desafio();
-		desafio6 = new Desafio();
-		desafio7 = new Desafio();
-		desafio8 = new Desafio();
-		desafio9 = new Desafio();
-		desafio10 = new Desafio();
-		user = new Usuario();
+		proyecto = mock(Proyecto.class);
+		desafio1 = mock(Desafio.class);
+		desafio2 = mock(Desafio.class);
+		desafio3 = mock(Desafio.class);
+		desafio4 = mock(Desafio.class);
+		desafio5 = mock(Desafio.class);
+		desafio6 = mock(Desafio.class);
+		desafio7 = mock(Desafio.class);
+		desafio8 = mock(Desafio.class);
+		desafio9 = mock(Desafio.class);
+		desafio10 = mock(Desafio.class);
+		user = mock(Usuario.class);
+		desafios = new ArrayList<Desafio>();
 		desafiosNoRecomendados = new ArrayList<Desafio>();
 		desafiosNoRecomendados.add(desafio2);
 		desafiosNoRecomendados.add(desafio4);
@@ -47,7 +50,7 @@ class testRecomendacionesPreferencia {
 		desafiosNoRecomendados.add(desafio8);
 		desafiosNoRecomendados.add(desafio10);
 		recomendacion = new RecomendacionPreferencia();
-		preferencias = new PreferenciasUsuario();
+		preferencias = mock(PreferenciasUsuario.class);
 		user.setPreferenciasUsuario(preferencias);
 		proyecto.addDesafio(desafio1);
 		proyecto.addDesafio(desafio2);
@@ -59,6 +62,16 @@ class testRecomendacionesPreferencia {
 		proyecto.addDesafio(desafio8);
 		proyecto.addDesafio(desafio9);
 		proyecto.addDesafio(desafio10);
+		desafios.add(desafio1);
+		desafios.add(desafio2);
+		desafios.add(desafio3);
+		desafios.add(desafio4);
+		desafios.add(desafio5);
+		desafios.add(desafio6);
+		desafios.add(desafio7);
+		desafios.add(desafio8);
+		desafios.add(desafio9);
+		desafios.add(desafio10);
 		user.setMetodoDeRecomendacion(recomendacion);
 		desafiosRecomendados = new ArrayList<Desafio>();
 		desafiosRecomendados.add(desafio1);
@@ -66,61 +79,45 @@ class testRecomendacionesPreferencia {
 		desafiosRecomendados.add(desafio5);
 		desafiosRecomendados.add(desafio7);
 		desafiosRecomendados.add(desafio9);
-		preferencias.setCantidadMuestras(4);
-		preferencias.setDificultad(4);
-		preferencias.setRecompensaPreferida(3);
-		preferencias.setDesafioPreferido(desafio9);
 
-		desafio1.setCantidadMuestrasNecesarias(4);
-		desafio1.setDificultad(4);
-		desafio1.setRecompensa(3);
-
-		desafio2.setCantidadMuestrasNecesarias(1);
-		desafio2.setDificultad(1);
-		desafio2.setRecompensa(1);
-
-		desafio3.setCantidadMuestrasNecesarias(4);
-		desafio3.setDificultad(4);
-		desafio3.setRecompensa(3);
-
-		desafio4.setCantidadMuestrasNecesarias(1);
-		desafio4.setDificultad(1);
-		desafio4.setRecompensa(1);
-
-		desafio5.setCantidadMuestrasNecesarias(4);
-		desafio5.setDificultad(4);
-		desafio5.setRecompensa(3);
-
-		desafio6.setCantidadMuestrasNecesarias(1);
-		desafio6.setDificultad(1);
-		desafio6.setRecompensa(1);
-
-		desafio7.setCantidadMuestrasNecesarias(4);
-		desafio7.setDificultad(4);
-		desafio7.setRecompensa(3);
-
-		desafio8.setCantidadMuestrasNecesarias(1);
-		desafio8.setDificultad(1);
-		desafio8.setRecompensa(1);
-
-		desafio9.setCantidadMuestrasNecesarias(4);
-		desafio9.setDificultad(4);
-		desafio9.setRecompensa(3);
-
-		desafio10.setCantidadMuestrasNecesarias(1);
-		desafio10.setDificultad(1);
-		desafio10.setRecompensa(1);
-
+		// when (proyecto.getDesafios()).thenReturn(desafiosRecomendados);
+		//when(proyecto.getRecomendaciones(user)).thenReturn(desafiosRecomendados);
+		when(user.getMetodoRecomendacion()).thenReturn(recomendacion);
+		when(user.contieneDesafio(desafio1)).thenReturn(false);
+		when(user.contieneDesafio(desafio2)).thenReturn(false);
+		when(user.contieneDesafio(desafio3)).thenReturn(false);
+		when(user.contieneDesafio(desafio4)).thenReturn(false);
+		when(user.contieneDesafio(desafio5)).thenReturn(false);
+		when(user.contieneDesafio(desafio6)).thenReturn(false);
+		when(user.contieneDesafio(desafio7)).thenReturn(false);
+		when(user.contieneDesafio(desafio8)).thenReturn(false);
+		when(user.contieneDesafio(desafio9)).thenReturn(false);
+		when(user.contieneDesafio(desafio10)).thenReturn(false);
+		when(proyecto.getDesafios()).thenReturn(desafios);
+		when(user.getPreferenciasUsuario()).thenReturn(preferencias);
+		when(preferencias.diferenciaConDesafio(desafio1)).thenReturn(4);
+		when(preferencias.diferenciaConDesafio(desafio2)).thenReturn(5);
+		when(preferencias.diferenciaConDesafio(desafio3)).thenReturn(4);
+		when(preferencias.diferenciaConDesafio(desafio4)).thenReturn(6);
+		when(preferencias.diferenciaConDesafio(desafio5)).thenReturn(4);
+		when(preferencias.diferenciaConDesafio(desafio6)).thenReturn(7);
+		when(preferencias.diferenciaConDesafio(desafio7)).thenReturn(4);
+		when(preferencias.diferenciaConDesafio(desafio8)).thenReturn(8);
+		when(preferencias.diferenciaConDesafio(desafio9)).thenReturn(4);
+		when(preferencias.diferenciaConDesafio(desafio10)).thenReturn(41);
+		
+		
+		
 	}
 
 	@Test
-	void test() {
-		assertEquals(proyecto.getRecomendaciones(user), desafiosRecomendados);
+	void testDesafiosRecomendadosTrue() {
+		assertEquals(desafiosRecomendados, recomendacion.desafiosRecomendadosSegunValor(user, proyecto));
 	}
 
 	@Test
-	void testfalse() {
-		assertNotEquals(proyecto.getRecomendaciones(user), desafiosNoRecomendados);
+	void testDesafiosRecomendadosFalse() {
+		assertNotEquals(desafiosNoRecomendados, recomendacion.desafiosRecomendadosSegunValor(user, proyecto));;
 	}
 
 }
