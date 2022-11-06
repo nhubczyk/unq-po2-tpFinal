@@ -10,8 +10,8 @@ public class DesafioActivo extends DesafioAceptado {
 
 	@Override
 	public float porcentajeCompletitud() {
-		return  ((float) desafioUsuario.getCantidadMuestrasNecesarias()
-				/ this.getCantidadDeMuestrasRecolectadas()) 
+		return  ((float) this.getCantidadDeMuestrasRecolectadas()
+				/ desafioUsuario.getCantidadMuestrasNecesarias()) 
 				* 100;
 	}
 	

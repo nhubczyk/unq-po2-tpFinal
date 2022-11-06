@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +16,7 @@ class DesafioCompletadoTestCase {
 	@BeforeEach
 	void setUp() {
 		desafioUsuario = mock(DesafioUsuario.class);
-		desafioCompletado = new DesafioCompletado(desafioUsuario, 4);
+		desafioCompletado = new DesafioCompletado(desafioUsuario, 4, new ArrayList<Muestra>());
 	}
 	
 	@Test
@@ -47,4 +48,6 @@ class DesafioCompletadoTestCase {
 	void testFueCompletado() {
 		assertTrue(desafioCompletado.fueCompletado());
 	}
+	
+	
 }

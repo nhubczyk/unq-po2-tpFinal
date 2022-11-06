@@ -1,7 +1,6 @@
 package ar.edu.unq.poo2.tpfinal;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class DesafioUsuario  {
@@ -45,6 +44,10 @@ public class DesafioUsuario  {
 	
 	public void agregarMuestra(Muestra muestra) {
 		this.estado.agregarMuestra(muestra);
+	}
+
+	public int getCantidadMuestrasRecolectadas() {
+		return this.getMuestrasRecolectadas().size();
 	}
 
 }

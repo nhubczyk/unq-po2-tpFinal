@@ -10,16 +10,12 @@ import org.junit.jupiter.api.Test;
 
 class DesafioNoAceptadoTestCase {
 	private DesafioNoAceptado desafioNoAceptado; // SUT
-	private DesafioActivo desafioActivo; // DOC
-	private DesafioCompletado desafioCompletado; // DOC
 	private DesafioUsuario desafioUsuario;
 	
 	@BeforeEach
 	void setUp() {
 		desafioUsuario = mock(DesafioUsuario.class);
 		desafioNoAceptado = new DesafioNoAceptado(desafioUsuario);
-		desafioActivo = mock(DesafioActivo.class);
-		desafioCompletado = mock(DesafioCompletado.class);
 	}
 	
 	@Test
