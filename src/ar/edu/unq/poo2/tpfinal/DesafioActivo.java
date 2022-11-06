@@ -11,8 +11,12 @@ public class DesafioActivo extends DesafioAceptado {
 	@Override
 	public float porcentajeCompletitud() {
 		return  ((float) desafioUsuario.getCantidadMuestrasNecesarias()
-				/ desafioUsuario.getCantidadMuestrasRecolectadas()) 
+				/ this.getCantidadDeMuestrasRecolectadas()) 
 				* 100;
+	}
+	
+	public int getCantidadDeMuestrasRecolectadas() {
+		return this.muestras.size();
 	}
 
 	@Override
@@ -33,6 +37,18 @@ public class DesafioActivo extends DesafioAceptado {
 	@Override
 	public void aceptarDesafio() {
 		// No hace nada porque ya esta aceptado.
+	}
+
+	@Override
+	public void agregarMuestra(Muestra muestra) {
+		this.muestras.add(muestra);
+		this.chequearCompletitud();
+	}
+	
+	private void chequearCompletitud() {
+		if(desafioUsuario.getCantidadMuestrasNecesarias() <= this.getCantidadDeMuestrasRecolectadas()) {
+			desafioUsuario.setEstado(new DesafioCompletado(desafioUsuario, votoGuardado, muestras));
+		}
 	}
 
 }

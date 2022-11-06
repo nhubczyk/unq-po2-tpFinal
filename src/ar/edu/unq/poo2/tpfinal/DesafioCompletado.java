@@ -1,14 +1,16 @@
 package ar.edu.unq.poo2.tpfinal;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class DesafioCompletado extends DesafioAceptado {
 	private LocalDate momentoSuperacion;
 
-	public DesafioCompletado(DesafioUsuario desafio, int voto) {
+	public DesafioCompletado(DesafioUsuario desafio, int voto, List<Muestra> listaDeMuestras) {
 		super(desafio);
 		this.momentoSuperacion=LocalDate.now();
 		this.votoGuardado=voto;
+		this.muestras=listaDeMuestras;
 	}
 	
 	@Override
@@ -33,6 +35,11 @@ public class DesafioCompletado extends DesafioAceptado {
 
 	@Override
 	public void aceptarDesafio() {
+		// No hace nada porque esta completado.
+	}
+
+	@Override
+	public void agregarMuestra(Muestra muestra) {
 		// No hace nada porque esta completado.
 	}
 

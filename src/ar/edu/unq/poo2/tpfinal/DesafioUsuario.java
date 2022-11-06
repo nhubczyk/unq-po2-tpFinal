@@ -8,7 +8,7 @@ public class DesafioUsuario  {
 	private EstadoDeDesafio estado;
 
 	private Desafio desafioConcreto;
-	private List<Muestra> muestras = new ArrayList<Muestra>();
+
 	
 	public DesafioUsuario(Desafio desafioConcreto) {
 		this.desafioConcreto=desafioConcreto;
@@ -23,13 +23,12 @@ public class DesafioUsuario  {
 		this.estado = estado;
 	}
 
-
 	public int getCantidadMuestrasNecesarias() {
 		return this.desafioConcreto.getCantidadMuestras();
 	}
 
-	public int getCantidadMuestrasRecolectadas() {
-		return this.muestras.size();
+	public List<Muestra> getMuestrasRecolectadas() {
+		return this.estado.getMuestras();
 	}
 
 	public float getPorcentajeCompletitud() {
@@ -40,8 +39,12 @@ public class DesafioUsuario  {
 		return desafioConcreto;
 	}
 
-	public Object getEstado() {
+	public EstadoDeDesafio getEstado() {
 		return estado;
+	}
+	
+	public void agregarMuestra(Muestra muestra) {
+		this.estado.agregarMuestra(muestra);
 	}
 
 }

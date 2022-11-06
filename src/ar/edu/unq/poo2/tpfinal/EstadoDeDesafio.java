@@ -1,6 +1,7 @@
 package ar.edu.unq.poo2.tpfinal;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public abstract class EstadoDeDesafio {
 	public DesafioUsuario desafioUsuario;
@@ -20,4 +21,8 @@ public abstract class EstadoDeDesafio {
 	public abstract Boolean fueCompletado();
 	
 	public abstract void aceptarDesafio();
+
+	public abstract List<Muestra> getMuestras();
+
+	public abstract void agregarMuestra(Muestra muestra);
 }
