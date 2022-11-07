@@ -49,5 +49,9 @@ public class DesafioUsuario  {
 	public int getCantidadMuestrasRecolectadas() {
 		return this.getMuestrasRecolectadas().size();
 	}
+	
+	public boolean fueCompletado() {
+		return this.estado.fueCompletado();
+	}
 
 }

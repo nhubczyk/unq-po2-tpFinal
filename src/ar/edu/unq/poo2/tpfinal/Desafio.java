@@ -2,7 +2,6 @@ package ar.edu.unq.poo2.tpfinal;
 
 public class Desafio implements Puntuable {
 	private int cantidadMuestrasNecesarias;
-	private float porcentaje;
 	private int dificultad;
 	private int recompensa;
 
@@ -14,18 +13,12 @@ public class Desafio implements Puntuable {
 		this.recompensa = recompensa;
 	}
 
-	public float setPorcentajeCompletitud(float cantidad) {
-		return porcentaje = cantidad;
-	}
 
 	public void setCantidadMuestrasNecesarias(int cantidadMuestrasNecesarias) {
 		this.cantidadMuestrasNecesarias = cantidadMuestrasNecesarias;
 	}
 
 
-	public float getPorcentajeCompletitud() {
-		return porcentaje;
-	}
 
 	@Override
 	public int getRecompensa() {

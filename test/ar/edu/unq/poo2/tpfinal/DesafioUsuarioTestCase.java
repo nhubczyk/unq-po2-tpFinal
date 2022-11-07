@@ -31,6 +31,9 @@ class DesafioUsuarioTestCase {
 		when(estadoDeDesafio.getMuestras()).thenReturn(new ArrayList<Muestra>());
 		when(estadoDeDesafio.porcentajeCompletitud()).thenReturn((float) 85);
 		when(estadoDeDesafio2.getMuestras()).thenReturn(Arrays.asList(muestra));
+		
+		when(estadoDeDesafio.fueCompletado()).thenReturn(true);
+		when(estadoDeDesafio2.fueCompletado()).thenReturn(false);
 	}
 	
 	@Test
@@ -76,13 +79,13 @@ class DesafioUsuarioTestCase {
 	}
 	
 	@Test
-	void getPorcentajeCompletitud() {
+	void testGetPorcentajeCompletitud() {
 		desafioUsuario.setEstado(estadoDeDesafio);
 		assertEquals((float) 85, desafioUsuario.getPorcentajeCompletitud());
 	}
 	
 	@Test
-	void getNotPorcentajeCompletitud() {
+	void testGetNotPorcentajeCompletitud() {
 		assertNotEquals((float) 30, desafioUsuario.getPorcentajeCompletitud());
 	}
 
@@ -110,5 +113,16 @@ class DesafioUsuarioTestCase {
 	void testNotCantidadDeMuestrasRecolectadas() {
 		desafioUsuario.setEstado(estadoDeDesafio2);
 		assertNotEquals(3, desafioUsuario.getCantidadMuestrasRecolectadas());
+	}
+	
+	@Test
+	void testFueCompletadoCasoTrue() {
+		desafioUsuario.setEstado(estadoDeDesafio);
+		assertTrue(desafioUsuario.fueCompletado());
+	}
+	@Test
+	void testFueCompletadoCasoFalse() {
+		desafioUsuario.setEstado(estadoDeDesafio2);
+		assertFalse(desafioUsuario.fueCompletado());
 	}
 }

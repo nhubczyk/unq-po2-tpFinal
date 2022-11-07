@@ -8,18 +8,22 @@ public class Usuario {
 	private Recomendacion metodoRecomendacion;
 	private PreferenciasUsuario preferenciasActuales;
 	private List<DesafioUsuario> desafios = new ArrayList<DesafioUsuario>();
-	// TODO CAMBIAR DESAFIOS COMPLETOS A DESAFIOS.
 
-	public float porcentajeCompletitud(DesafioUsuario desafio) {
-		return desafio.getPorcentajeCompletitud();
+	//y
+	public Usuario(Recomendacion metodoRecomendacion, PreferenciasUsuario preferenciasIniciales){
+		this.metodoRecomendacion = metodoRecomendacion;
+		this.preferenciasActuales = preferenciasIniciales;
 	}
 
+
+	//y
 	public List<DesafioUsuario> getDesafios() {
 		return desafios;
 	}
 
+	//y
 	public Boolean contieneDesafio(Desafio desafio) {
-		for (DesafioUsuario desafioUsuario : desafios) {
+		for (DesafioUsuario desafioUsuario : this.getDesafios()) {
 			if (desafioUsuario.getDesafio() == desafio) {
 				return true;
 			}
@@ -27,35 +31,61 @@ public class Usuario {
 		return false;
 	}
 
-	public void superoElDesafio(DesafioUsuario desafioCompletado) {
-		desafios.add(desafioCompletado);
+	//y
+	public void setMetodoDeRecomendacion(Recomendacion metodoUtilizado) {
+		this.metodoRecomendacion = metodoUtilizado;
 	}
 
-	public Recomendacion setMetodoDeRecomendacion(Recomendacion metodoUtilizado) {
-		return metodoRecomendacion = metodoUtilizado;
-	}
-
+	//y
 	public Recomendacion getMetodoRecomendacion() {
 		return metodoRecomendacion;
 	}
 
-	public LocalDate getMomentoSuperacion(DesafioUsuario desafio) {
-		return desafio.getMomentoSuperacion();
+	//y
+	public LocalDate getMomentoSuperacion(Desafio desafio) {
+		return getDesafioUsuarioDeDesafio(desafio).getMomentoSuperacion();
 	}
 
-	public float porcentajeCompletitudGeneral(Proyecto proyecto) {
-		float cantidadDePorcentaje = 0;
-		for (Desafio desafioUsuario : proyecto.getDesafios()) {
-			cantidadDePorcentaje += desafioUsuario.getPorcentajeCompletitud();
+	public float porcentajeDesafiosCompletados() {
+		int cantidadCompletados = 0;
+		for (DesafioUsuario desafio : this.getDesafios()) {
+			if(desafio.fueCompletado()) { 
+				cantidadCompletados++;
+			}
 		}
-		return cantidadDePorcentaje / proyecto.getDesafios().size();
+		return (float) cantidadCompletados / this.getDesafios().size() * 100f;
+	}
+	
+	
+	//y
+	//si desafio no esta incluido en los desafios del usuario devuelve 0
+	public float porcentajeCompletitudDesafio(Desafio desafio) {
+		DesafioUsuario desafioU = getDesafioUsuarioDeDesafio(desafio);
+		if(desafioU == null) { return 0f; }
+		return desafioU.getPorcentajeCompletitud();
+	}
+	//y
+	private DesafioUsuario getDesafioUsuarioDeDesafio(Desafio desafio) {
+		for (DesafioUsuario desafioUsuario : this.getDesafios()) {
+			if(desafioUsuario.getDesafio() == desafio) {
+				return desafioUsuario;
+			}
+		}
+		return null;
 	}
 
+	//y
 	public PreferenciasUsuario getPreferenciasUsuario() {
 		return preferenciasActuales;
 	}
-
+	//y
 	public void setPreferenciasUsuario(PreferenciasUsuario preferencias) {
 		preferenciasActuales = preferencias;
+	}
+	
+	//y
+	public void anhadirDeafio(Desafio desafio) {
+		if (this.contieneDesafio(desafio)) { return; }
+		this.desafios.add(new DesafioUsuario(desafio));
 	}
 }

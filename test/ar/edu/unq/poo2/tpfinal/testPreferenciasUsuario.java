@@ -1,17 +1,17 @@
 package ar.edu.unq.poo2.tpfinal;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class testPreferenciasUsuario {
+	private PreferenciasUsuario preferencias; //SUT
+	
 	private Usuario usuario;
 	private Desafio desafio;
 	private Desafio desafio2;
-	private PreferenciasUsuario preferencias;
 	private int dificultad;
 	private int cantidadMuestras;
 	private int recompensa;
@@ -21,7 +21,7 @@ class testPreferenciasUsuario {
 		usuario = mock(Usuario.class);
 		desafio = mock(Desafio.class);
 		desafio2 = mock(Desafio.class);
-		preferencias = mock(PreferenciasUsuario.class);
+		preferencias = mock(PreferenciasUsuario.class)
 
 		when(preferencias.getCantidadMuestras()).thenReturn(3);
 		when(preferencias.getDificultad()).thenReturn(3);
