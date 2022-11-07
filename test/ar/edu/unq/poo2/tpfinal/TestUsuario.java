@@ -196,11 +196,11 @@ class TestUsuario {
 		
 		when(usuarioConDesafiosMockeados2.getDesafios()).thenReturn(Arrays.asList(desafioUActivo1
 				, desafioUCompletado2, desafioUCompletado3));
-		assertEquals(66.66667f ,usuarioConDesafiosMockeados2.porcentajeDesafiosCompletados());
+		assertEquals((float) 2 / 3 * 100 ,usuarioConDesafiosMockeados2.porcentajeDesafiosCompletados());
 		
 		when(usuarioConDesafiosMockeados2.getDesafios()).thenReturn(Arrays.asList(desafioUActivo1
 				, desafioUActivo3, desafioUCompletado3));
-		assertEquals(33.333336f ,usuarioConDesafiosMockeados2.porcentajeDesafiosCompletados());
+		assertEquals((float) 1 / 3 * 100 ,usuarioConDesafiosMockeados2.porcentajeDesafiosCompletados());
 	}
 
 }

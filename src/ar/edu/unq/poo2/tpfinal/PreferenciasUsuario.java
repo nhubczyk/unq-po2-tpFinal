@@ -5,6 +5,15 @@ public class PreferenciasUsuario implements Puntuable {
 	int dificultad;
 	int recompensaPreferida;
 	Desafio desafioPreferido;
+	
+	public PreferenciasUsuario(int cantidadMuestras, int dificultad, int recompensaPreferida,
+			Desafio desafioPreferido) {
+		setCantidadMuestras(cantidadMuestras);
+		setDificultad(dificultad);
+		setRecompensaPreferida(recompensaPreferida);
+		setDesafioPreferido(desafioPreferido);
+	}
+	
 
 	public void setCantidadMuestras(int cantidadMuestrasNueva) {
 		this.cantidadMuestras = cantidadMuestrasNueva;

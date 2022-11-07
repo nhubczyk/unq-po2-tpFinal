@@ -4,6 +4,12 @@ public class Desafio implements Puntuable {
 	private int cantidadMuestrasNecesarias;
 	private int dificultad;
 	private int recompensa;
+	
+	public Desafio(int cantidadMuestrasNecesarias, int dificultad, int recompensa) {
+		setCantidadMuestrasNecesarias(cantidadMuestrasNecesarias);
+		setDificultad(dificultad);
+		setRecompensa(recompensa);
+	}
 
 	public void setDificultad(int dificultad) {
 		this.dificultad = dificultad;
@@ -35,10 +41,10 @@ public class Desafio implements Puntuable {
 		return cantidadMuestrasNecesarias;
 	}
 
-	public int similitudConDesafio(Desafio desafio) {
-		return Math.abs(desafio.getDificultad() - this.getDificultad())
+	public float similitudConDesafio(Desafio desafio) {
+		return (float) (Math.abs(desafio.getDificultad() - this.getDificultad())
 				+ Math.abs(desafio.getCantidadMuestras() - this.getCantidadMuestras())
-				+ Math.abs(desafio.getRecompensa() - this.getRecompensa());
+				+ Math.abs(desafio.getRecompensa() - this.getRecompensa())) / 3;
 	}
 
 }
