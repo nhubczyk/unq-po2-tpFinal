@@ -1,4 +1,6 @@
 # unq-po2-tpFinal
-Se agrega repositorio para el trabajo grupal de po2.
 
-Link del UML: https://drive.google.com/file/d/1CB0XQDros08WpVStHTZbII6hTdcjZ6wH/view?usp=sharing
+Link del UML en drive: https://drive.google.com/file/d/1CB0XQDros08WpVStHTZbII6hTdcjZ6wH/view?usp=sharing
+También se encuentra el diagrama en formato drawio
+
+![tpFinal](https://user-images.githubusercontent.com/49459705/200213997-0fc4cd52-ebc4-4290-a471-35d0f3144363.jpg)
