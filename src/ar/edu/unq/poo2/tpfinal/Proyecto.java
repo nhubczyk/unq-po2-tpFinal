@@ -37,7 +37,7 @@ public class Proyecto {
 		return categorias;
 	}
 	
-	public void addCategoria(Categoria cat) {
+	public void agregarCategoria(Categoria cat) {
 		this.categorias.add(cat);
 	}
 	
@@ -49,7 +49,7 @@ public class Proyecto {
 		return this.participantes.contains(user);
 	}
 	
-	public void addMuestra(Muestra muestra) {
+	public void agregarMuestra(Muestra muestra) {
 		this.muestras.add(muestra);
 	}
 	
@@ -65,11 +65,15 @@ public class Proyecto {
 		return desafios;
 	}
 	
-	public void addDesafio(Desafio desafio) {
+	public void agregarDesafio(Desafio desafio) {
 		desafios.add(desafio);
 	}
 	
 	public List<Desafio> getRecomendaciones(Usuario user) {
 		return user.getMetodoRecomendacion().desafiosRecomendadosSegunValor(user, this);
+	}
+	
+	public void agregarUsuario(Usuario user) {
+		this.participantes.add(user);
 	}
 }
