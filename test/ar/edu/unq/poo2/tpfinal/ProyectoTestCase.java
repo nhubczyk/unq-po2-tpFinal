@@ -57,16 +57,16 @@ class ProyectoTestCase {
 	
 	@Test
 	void testListadoDeCategorias() {
-		proyecto.addCategoria(categoria);
-		proyecto.addCategoria(categoria2);
-		proyecto.addCategoria(categoria3);
+		proyecto.agregarCategoria(categoria);
+		proyecto.agregarCategoria(categoria2);
+		proyecto.agregarCategoria(categoria3);
 		assertTrue(proyecto.getCategorias().contains(categoria));
 	}
 	
 	@Test
 	void testNoListadoDeCategorias() {
-		proyecto.addCategoria(categoria);
-		proyecto.addCategoria(categoria2);
+		proyecto.agregarCategoria(categoria);
+		proyecto.agregarCategoria(categoria2);
 		assertFalse(proyecto.getCategorias().contains(categoria3));
 	}
 	
@@ -84,26 +84,26 @@ class ProyectoTestCase {
 	
 	@Test
 	void testAddMuestra() {
-		proyecto.addMuestra(muestra);
+		proyecto.agregarMuestra(muestra);
 		assertTrue(proyecto.tieneMuestra(muestra));
 	}
 	
 	@Test
 	void testNotAddMuestra() {
-		proyecto.addMuestra(muestra);
+		proyecto.agregarMuestra(muestra);
 		assertFalse(proyecto.tieneMuestra(muestra2));
 	}
 	
 	@Test
 	void testListadoDeMuestras() {
-		proyecto.addMuestra(muestra);
-		proyecto.addMuestra(muestra2);
+		proyecto.agregarMuestra(muestra);
+		proyecto.agregarMuestra(muestra2);
 		assertTrue(proyecto.getMuestras().contains(muestra));
 	}
 	
 	@Test
 	void testNoListadoDeMuestra() {
-		proyecto.addMuestra(muestra);
+		proyecto.agregarMuestra(muestra);
 		assertFalse(proyecto.getMuestras().contains(muestra2));
 	}
 	
