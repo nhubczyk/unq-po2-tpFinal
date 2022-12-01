@@ -12,7 +12,7 @@ public class CienciaParticipativa {
 		
 	}
 
-	public void addProyecto(Proyecto proyecto) {
+	public void agregarProyecto(Proyecto proyecto) {
 		proyectos.add(proyecto);
 	}
 

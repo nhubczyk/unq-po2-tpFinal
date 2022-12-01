@@ -30,27 +30,27 @@ class CienciaParticipativaTestCase {
 	
 	@Test
 	void testAgregarProyecto() {
-		ciencia.addProyecto(proyecto);
+		ciencia.agregarProyecto(proyecto);
 		assertTrue(ciencia.tieneElElemento(proyecto));
 	}
 	
 	@Test
 	void testNoAgregarProyecto() {
-		ciencia.addProyecto(proyecto2);
+		ciencia.agregarProyecto(proyecto2);
 		assertFalse(ciencia.tieneElElemento(proyecto));
 	}
 	
 	@Test
 	void testFiltrarProyectos() {
-		ciencia.addProyecto(proyecto);
-		ciencia.addProyecto(proyecto2);
+		ciencia.agregarProyecto(proyecto);
+		ciencia.agregarProyecto(proyecto2);
 		assertTrue(ciencia.filtrarProyectos(filtro).contains(proyecto));
 	}
 	
 	@Test
 	void testNoFiltrarProyectos() {
-		ciencia.addProyecto(proyecto);
-		ciencia.addProyecto(proyecto2);
+		ciencia.agregarProyecto(proyecto);
+		ciencia.agregarProyecto(proyecto2);
 		assertFalse(ciencia.filtrarProyectos(filtro).contains(proyecto2));
 	}
 

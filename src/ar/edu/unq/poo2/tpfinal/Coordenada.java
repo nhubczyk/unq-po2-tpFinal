@@ -4,9 +4,9 @@ public class Coordenada {
 	private float latitud;
 	private float longitud;
 	
-	public Coordenada(float lat, float longi) {
-		this.latitud=lat;
-		this.longitud=longi;
+	public Coordenada(float latitud, float longitud) {
+		this.latitud=latitud;
+		this.longitud=longitud;
 	}
 	
 	public float getLatitud() {
