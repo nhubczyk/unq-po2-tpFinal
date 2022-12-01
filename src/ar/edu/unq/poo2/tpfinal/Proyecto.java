@@ -12,9 +12,10 @@ public class Proyecto {
 	private List<Usuario> participantes = new ArrayList<Usuario>();
 	private List<Desafio> desafios = new ArrayList<Desafio>();
 	
-	public Proyecto(String nom, String descripcion) {
+	public Proyecto(String nom, String descripcion, Categoria categoria) {
 		this.setNombre(nom);
 		this.setDescripcion(descripcion);
+		this.agregarCategoria(categoria);
 	}
 	
 	public String getNombre() {
