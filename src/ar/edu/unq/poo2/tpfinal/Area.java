@@ -12,4 +12,8 @@ public class Area {
 	public float getRadio() {
 		return radio;
 	}
+
+	public Coordenada getCoordenada() {
+		return coordenada;
+	}
 }
