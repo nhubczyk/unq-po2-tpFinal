@@ -14,12 +14,11 @@ public abstract class DesafioAceptado extends EstadoDeDesafio {
 	protected int votoGuardado;
 	
 	
-	public Boolean votarDesafio(int voto) {
+	public void votarDesafio(int voto) throws Exception {
 		if(voto >= 0 && voto <=5) {
 			this.votoGuardado=voto;
-			return true;
 		}
-		return false;
+		throw new Exception("El valor del voto esta fuera del rango");
 	}
 	
 	public List<Muestra> getMuestras() {

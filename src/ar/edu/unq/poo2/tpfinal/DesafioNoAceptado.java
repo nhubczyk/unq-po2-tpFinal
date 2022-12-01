@@ -11,11 +11,6 @@ public class DesafioNoAceptado extends EstadoDeDesafio {
 	}
 
 	@Override
-	public Boolean votarDesafio(int voto) {
-		return false;
-	}
-
-	@Override
 	public LocalDate getMomentoSuperacion() {
 		return null;
 	}
@@ -48,6 +43,12 @@ public class DesafioNoAceptado extends EstadoDeDesafio {
 	@Override
 	public void agregarMuestra(Muestra muestra) {
 		// No hace nada porque es desafio no aceptado.	
+	}
+
+
+	@Override
+	public void votarDesafio(int voto) throws Exception {
+		// 	No hace nada ya que es un desafio no aceptado.
 	}
 
 

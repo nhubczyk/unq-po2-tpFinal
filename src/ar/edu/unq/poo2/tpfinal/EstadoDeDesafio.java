@@ -10,7 +10,7 @@ public abstract class EstadoDeDesafio {
 		this.desafioUsuario=desafio;
 	}
 	
-	public abstract Boolean votarDesafio(int voto);
+	public abstract void votarDesafio(int voto) throws Exception;
 	
 	public abstract float porcentajeCompletitud();
 	
