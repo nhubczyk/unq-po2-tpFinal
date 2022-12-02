@@ -1,6 +1,9 @@
 package ar.edu.unq.poo2.tpfinal;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
@@ -11,6 +14,12 @@ import org.junit.jupiter.api.Test;
 
 class testRecomendacionesPreferencia {
 	private RecomendacionPreferencia recomendacion;// SUT
+	
+	private Proyecto proyecto;
+	private Usuario usuario;
+	private List<Desafio> desafiosResultado;
+	
+	/*
 	private PreferenciasUsuario preferencias;// DOC
 	private Proyecto proyecto;
 	private Desafio desafio1;
@@ -28,8 +37,18 @@ class testRecomendacionesPreferencia {
 	private List<Desafio> desafiosNoRecomendados;
 	private List<Desafio> desafios;
 
+	*/
+
 	@BeforeEach
-	void setUp() throws Exception {
+	void setUp() {
+		
+		recomendacion = new RecomendacionPreferencia();
+		usuario = mock(Usuario.class);
+		desafiosResultado = mock(List.class);
+		proyecto = mock(Proyecto.class);
+		
+		when(usuario.nDesafiosConMayorCoincidencia(5, proyecto)).thenReturn(desafiosResultado);
+/*
 		proyecto = mock(Proyecto.class);
 		desafio1 = mock(Desafio.class);
 		desafio2 = mock(Desafio.class);
@@ -103,9 +122,20 @@ class testRecomendacionesPreferencia {
 		when(preferencias.diferenciaConDesafio(desafio8)).thenReturn(8);
 		when(preferencias.diferenciaConDesafio(desafio9)).thenReturn(4);
 		when(preferencias.diferenciaConDesafio(desafio10)).thenReturn(41);
-
+*/
 	}
 
+	
+	@Test
+	void testDesafiosRecomendadosSegunValor() {
+		verify(usuario, never()).nDesafiosConMayorCoincidencia(anyInt(), any(Proyecto.class));		
+		
+		assertEquals(desafiosResultado, recomendacion.desafiosRecomendadosSegunValor(usuario, proyecto));
+		
+		verify(usuario).nDesafiosConMayorCoincidencia(5, proyecto);
+	}
+	
+/*
 	@Test
 	void testDesafiosRecomendadosTrue() {
 		assertEquals(desafiosRecomendados, recomendacion.desafiosRecomendadosSegunValor(user, proyecto));
@@ -131,6 +161,6 @@ class testRecomendacionesPreferencia {
 	void testDesafiosSinAceptarFalse() {
 		assertNotEquals(desafiosRecomendados, recomendacion.desafiosSinAceptar(proyecto, user));
 	}
-
+*/
 
 }

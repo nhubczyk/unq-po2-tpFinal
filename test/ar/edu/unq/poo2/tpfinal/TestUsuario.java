@@ -37,6 +37,8 @@ class TestUsuario {
 	
 	private Usuario usuarioConDesafiosMockeados1;
 	private Usuario usuarioConDesafiosMockeados2;
+	
+	private Proyecto proyecto;
 
 	@BeforeEach
 	void setUp() {
@@ -57,6 +59,8 @@ class TestUsuario {
 		desafioUActivo2 = mock(DesafioUsuario.class);
 		desafioUActivo3 = mock(DesafioUsuario.class);
 		desafioUActivo4 = mock(DesafioUsuario.class);
+		
+		proyecto = mock(Proyecto.class);
 		
 		when(desafioUActivo1.getDesafio()).thenReturn(desafio1);
 		when(desafioUActivo1.getPorcentajeCompletitud()).thenReturn(70.0f);
@@ -93,11 +97,14 @@ class TestUsuario {
 		usuarioConDesafiosMockeados2 = mock(Usuario.class, CALLS_REAL_METHODS);
 		when(usuarioConDesafiosMockeados2.getDesafios()).thenReturn(Arrays.asList(desafioUActivo1, desafioUActivo3, desafioUActivo4
 				, desafioUCompletado1, desafioUCompletado2, desafioUCompletado3));
+		
+		
+		when(proyecto.getDesafios()).thenReturn(Arrays.asList(desafio1, desafio2, desafio3, desafio4, desafio5, desafio6, desafio7));
 
 	}
 	
 	@Test
-	void testAddYContieneDeafios() {
+	void testAgregarYContieneDeafios() {
 		usuario = new Usuario(recomendacionFavorita, preferencias2);
 		
 		assertFalse(usuario.contieneDesafio(desafio1));
@@ -108,10 +115,10 @@ class TestUsuario {
 		assertFalse(usuario.contieneDesafio(desafio6));
 		assertFalse(usuario.contieneDesafio(desafio7));
 		
-		usuario.anhadirDeafio(desafio1);
-		usuario.anhadirDeafio(desafio2);
-		usuario.anhadirDeafio(desafio3);
-		usuario.anhadirDeafio(desafio4);
+		usuario.agregarDeafio(desafio1);
+		usuario.agregarDeafio(desafio2);
+		usuario.agregarDeafio(desafio3);
+		usuario.agregarDeafio(desafio4);
 		
 		assertTrue(usuario.contieneDesafio(desafio1));
 		assertTrue(usuario.contieneDesafio(desafio2));
@@ -121,9 +128,9 @@ class TestUsuario {
 		assertFalse(usuario.contieneDesafio(desafio6));
 		assertFalse(usuario.contieneDesafio(desafio7));
 		
-		usuario.anhadirDeafio(desafio5);
-		usuario.anhadirDeafio(desafio6);
-		usuario.anhadirDeafio(desafio7);
+		usuario.agregarDeafio(desafio5);
+		usuario.agregarDeafio(desafio6);
+		usuario.agregarDeafio(desafio7);
 		
 		assertTrue(usuario.contieneDesafio(desafio1));
 		assertTrue(usuario.contieneDesafio(desafio2));
@@ -135,14 +142,14 @@ class TestUsuario {
 	}
 	
 	@Test
-	void testAnhadirDesafioYGet() {
+	void testAgregarDesafioYGet() {
 		usuario = new Usuario(recomendacionFavorita, preferencias2);
 		
-		usuario.anhadirDeafio(desafio1);
-		usuario.anhadirDeafio(desafio2);
-		usuario.anhadirDeafio(desafio3);
-		usuario.anhadirDeafio(desafio4);
-		usuario.anhadirDeafio(desafio1);
+		usuario.agregarDeafio(desafio1);
+		usuario.agregarDeafio(desafio2);
+		usuario.agregarDeafio(desafio3);
+		usuario.agregarDeafio(desafio4);
+		usuario.agregarDeafio(desafio1);
 		
 		assertEquals(4, usuario.getDesafios().size());
 	}
@@ -201,6 +208,47 @@ class TestUsuario {
 		when(usuarioConDesafiosMockeados2.getDesafios()).thenReturn(Arrays.asList(desafioUActivo1
 				, desafioUActivo3, desafioUCompletado3));
 		assertEquals((float) 1 / 3 * 100 ,usuarioConDesafiosMockeados2.porcentajeDesafiosCompletados());
+	}
+	
+	
+	@Test
+	void testDesafiosNoAgregados() {
+		usuario = new Usuario(recomendacionFavorita, preferencias1);
+		usuario.agregarDeafio(desafio1);
+		usuario.agregarDeafio(desafio2);
+		usuario.agregarDeafio(desafio3);
+		
+		assertFalse(usuario.desafiosNoAgregados(proyecto).contains(desafio1));
+		assertFalse(usuario.desafiosNoAgregados(proyecto).contains(desafio2));
+		assertFalse(usuario.desafiosNoAgregados(proyecto).contains(desafio3));
+		
+		assertTrue(usuario.desafiosNoAgregados(proyecto).contains(desafio4));
+		assertTrue(usuario.desafiosNoAgregados(proyecto).contains(desafio5));
+		assertTrue(usuario.desafiosNoAgregados(proyecto).contains(desafio6));
+		assertTrue(usuario.desafiosNoAgregados(proyecto).contains(desafio7));
+		
+		assertEquals(4, usuario.desafiosNoAgregados(proyecto).size());
+		
+	}
+	
+	@Test
+	void testNDesafiosConMayorCoincidencia_Proyecto() {
+		
+	}
+	
+	@Test
+	void testNDesafiosConMayorCoincidencia_ListaDesafios() {
+		
+	}
+	
+	@Test
+	void testNDesafiosConMayorSimilitud_Proyecto() {
+		
+	}
+	
+	@Test
+	void testNDesafiosConMayorSimilitud_ListaDesafios() {
+		
 	}
 
 }

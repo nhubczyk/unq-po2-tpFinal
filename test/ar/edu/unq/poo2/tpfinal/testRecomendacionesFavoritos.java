@@ -1,8 +1,7 @@
 package ar.edu.unq.poo2.tpfinal;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +12,12 @@ import org.mockito.Mock;
 
 class testRecomendacionesFavoritos {
 	private RecomendacionFavoritos recomendacion; // SUT
+	
+	private Proyecto proyecto;
+	private Usuario usuario;
+	private List<Desafio> desafiosCoincidencia;
+	private List<Desafio> desafiosSimilitud;
+	/*
 	private PreferenciasUsuario preferencias;// DOC
 	private Proyecto proyecto;
 	private Desafio desafio1;
@@ -29,9 +34,20 @@ class testRecomendacionesFavoritos {
 	private List<Desafio> desafiosRecomendados;
 	private List<Desafio> desafiosNoRecomendados;
 	private List<Desafio> desafios;
-
+	*/
 	@BeforeEach
-	void setUp() throws Exception {
+	void setUp() {
+		
+		recomendacion = new RecomendacionFavoritos();
+		usuario = mock(Usuario.class);
+		desafiosCoincidencia = mock(List.class);
+		desafiosSimilitud = mock(List.class);
+		proyecto = mock(Proyecto.class);
+		
+		when(usuario.nDesafiosConMayorCoincidencia(20, proyecto)).thenReturn(desafiosCoincidencia);
+		when(usuario.nDesafiosConMayorSimilitud(5, desafiosCoincidencia)).thenReturn(desafiosSimilitud);
+		
+		/*
 		proyecto = mock(Proyecto.class);
 		desafio1 = mock(Desafio.class);
 		desafio2 = mock(Desafio.class);
@@ -103,9 +119,21 @@ class testRecomendacionesFavoritos {
 		when(preferencias.diferenciaConDesafio(desafio8)).thenReturn(8);
 		when(preferencias.diferenciaConDesafio(desafio9)).thenReturn(4);
 		when(preferencias.diferenciaConDesafio(desafio10)).thenReturn(41);
-
+		*/
 	}
 
+	@Test
+	void testDesafiosRecomendadosSegunValor() {
+		verify(usuario, never()).nDesafiosConMayorCoincidencia(anyInt(), any(Proyecto.class));
+		verify(usuario, never()).nDesafiosConMayorSimilitud(anyInt(), anyList());
+		
+		assertEquals(desafiosSimilitud, recomendacion.desafiosRecomendadosSegunValor(usuario, proyecto));
+		
+		verify(usuario).nDesafiosConMayorCoincidencia(20, proyecto);
+		verify(usuario).nDesafiosConMayorSimilitud(5, desafiosCoincidencia);
+	}
+	
+/*
 	@Test
 	void testDesafiosRecomendadosTrue() {
 		assertEquals(desafiosRecomendados, recomendacion.desafiosRecomendadosSegunValor(user, proyecto));
@@ -130,5 +158,5 @@ class testRecomendacionesFavoritos {
 	void testDesafiosSinAceptarFalse() {
 		assertNotEquals(desafiosRecomendados, recomendacion.desafiosSinAceptar(proyecto, user));
 	}
-
+*/
 }

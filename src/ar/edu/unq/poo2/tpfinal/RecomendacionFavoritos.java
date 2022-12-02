@@ -4,19 +4,13 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class RecomendacionFavoritos extends Recomendacion {
+public class RecomendacionFavoritos implements Recomendacion {
 
 	@Override
 	public List<Desafio> desafiosRecomendadosSegunValor(Usuario usuario, Proyecto proyecto) {
-		List<Desafio> desafiosRecomendados = this.nDesafiosConMayorCoincidencia(20,
-				this.desafiosSinAceptar(proyecto, usuario), usuario);
-		Desafio desafioFav = usuario.getPreferenciasUsuario().getDesafioPreferido();
-		return desafiosRecomendados.stream()
-				.sorted((d1, d2) -> Float.compare(d1.similitudConDesafio(desafioFav), 
-												d2.similitudConDesafio(desafioFav)))
-				.limit(5).toList();
+		List<Desafio> desafiosRecomendados = usuario.nDesafiosConMayorCoincidencia(20, proyecto);
+		return usuario.nDesafiosConMayorSimilitud(5, desafiosRecomendados);
 	}
-	
 
 
 }

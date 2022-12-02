@@ -1,6 +1,6 @@
 package ar.edu.unq.poo2.tpfinal;
 
-public class PreferenciasUsuario implements Puntuable {
+public class PreferenciasUsuario  {
 	int cantidadMuestras;
 	int dificultad;
 	int recompensaPreferida;
@@ -41,17 +41,15 @@ public class PreferenciasUsuario implements Puntuable {
 		return this.desafioPreferido;
 	}
 
-	@Override
+
 	public int getRecompensa() {
 		return this.recompensaPreferida;
 	}
 
-	@Override
 	public int getDificultad() {
 		return this.dificultad;
 	}
 
-	@Override
 	public int getCantidadMuestras() {
 		return this.cantidadMuestras;
 	}

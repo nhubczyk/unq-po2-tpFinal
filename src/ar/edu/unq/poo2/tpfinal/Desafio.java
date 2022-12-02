@@ -1,6 +1,6 @@
 package ar.edu.unq.poo2.tpfinal;
 
-public class Desafio implements Puntuable {
+public class Desafio {
 	private int cantidadMuestrasNecesarias;
 	private int dificultad;
 	private int recompensa;
@@ -26,17 +26,14 @@ public class Desafio implements Puntuable {
 
 
 
-	@Override
 	public int getRecompensa() {
 		return recompensa;
 	}
 
-	@Override
 	public int getDificultad() {
 		return dificultad;
 	}
 
-	@Override
 	public int getCantidadMuestras() {
 		return cantidadMuestrasNecesarias;
 	}
