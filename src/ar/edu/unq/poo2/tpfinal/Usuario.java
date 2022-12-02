@@ -80,8 +80,9 @@ public class Usuario {
 	}
 	
 	
-	public void agregarDeafio(Desafio desafio) {
-		if (this.contieneDesafio(desafio)) { return; }
+	public void agregarDesafio(Desafio desafio) throws Exception {
+		if (this.contieneDesafio(desafio)) { 
+			throw new Exception("Se intengo agregar un desafio que ya existia en Usuario"); }
 		this.desafios.add(new DesafioUsuario(desafio));
 	}
 	

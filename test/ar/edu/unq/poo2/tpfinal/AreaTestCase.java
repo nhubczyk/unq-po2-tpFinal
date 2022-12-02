@@ -13,17 +13,19 @@ class AreaTestCase {
 	@BeforeEach
 	public void setUp() {
 		coordenada = mock(Coordenada.class);
-		area = new Area(coordenada, 50f);
 	}
 	
 	@Test
-	void testGetArea() {
+	void testGetArea() throws Exception {
+		area = new Area(coordenada, 50f);
 		assertEquals(50f, area.getRadio());
 	}
 	
 	@Test
-	void testNotGetArea() {
-		assertNotEquals(100f, area.getRadio());
+	void testExcepcionDelContructor() throws Exception {
+		assertThrows(Exception.class, () -> {
+			area = new Area(coordenada, -50f);
+	    });
 	}
 
 }
