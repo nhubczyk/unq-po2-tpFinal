@@ -7,14 +7,10 @@ import org.junit.jupiter.api.Test;
 
 class CategoriaTest {
 	Categoria categoria;
-	
-	@BeforeEach
-	void setUp() throws Exception {
-		categoria = new Categoria("nombre1", "descripcion1");
-	}
 
 	@Test
 	void testContructorYGet() {
+		categoria = new Categoria("nombre1", "descripcion1");
 		assertEquals("nombre1", categoria.getNombre());
 		assertEquals("descripcion1", categoria.getDescripcion());
 		

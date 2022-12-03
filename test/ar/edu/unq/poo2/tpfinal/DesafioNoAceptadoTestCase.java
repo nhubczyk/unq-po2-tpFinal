@@ -40,11 +40,6 @@ class DesafioNoAceptadoTestCase {
 	}
 	
 	@Test
-	void testVotarDesafio() {
-		assertFalse(desafioNoAceptado.votarDesafio(3));
-	}
-	
-	@Test
 	void testPorcentajeCompletitud() {
 		assertEquals(0.00f, desafioNoAceptado.porcentajeCompletitud());
 	}

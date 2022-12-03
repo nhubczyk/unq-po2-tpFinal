@@ -17,6 +17,7 @@ public abstract class DesafioAceptado extends EstadoDeDesafio {
 	public void votarDesafio(int voto) throws Exception {
 		if(voto >= 0 && voto <=5) {
 			this.votoGuardado=voto;
+			return;
 		}
 		throw new Exception("El valor del voto esta fuera del rango");
 	}

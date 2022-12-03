@@ -26,7 +26,6 @@ class ProyectoTestCase {
 	
 	@BeforeEach
 	public void setUp() {
-		proyecto = new Proyecto("Biotecnologia", "Proyecto biotecnologo");
 		categoria = mock(Categoria.class);
 		categoria2 = mock(Categoria.class);
 		categoria3 = mock(Categoria.class);
@@ -38,6 +37,7 @@ class ProyectoTestCase {
 		desafio2 = mock(Desafio.class);
 		desafio3 = mock(Desafio.class);
 		recomendacion = mock(Recomendacion.class);
+		proyecto = new Proyecto("Biotecnologia", "Proyecto biotecnologo", categoria);
 		
 		List<Desafio> listaDesafios = Arrays.asList(desafio, desafio2);
 		

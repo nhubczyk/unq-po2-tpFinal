@@ -104,52 +104,26 @@ class TestUsuario {
 	}
 	
 	@Test
-	void testAgregarYContieneDeafios() {
+	void testAgregarYContieneDeafios() throws Exception {
 		usuario = new Usuario(recomendacionFavorita, preferencias2);
-		
+		assertEquals(0, usuario.getDesafios().size());
 		assertFalse(usuario.contieneDesafio(desafio1));
-		assertFalse(usuario.contieneDesafio(desafio2));
-		assertFalse(usuario.contieneDesafio(desafio3));
-		assertFalse(usuario.contieneDesafio(desafio4));
-		assertFalse(usuario.contieneDesafio(desafio5));
-		assertFalse(usuario.contieneDesafio(desafio6));
-		assertFalse(usuario.contieneDesafio(desafio7));
-		
-		usuario.agregarDeafio(desafio1);
-		usuario.agregarDeafio(desafio2);
-		usuario.agregarDeafio(desafio3);
-		usuario.agregarDeafio(desafio4);
-		
+		usuario.agregarDesafio(desafio1);
 		assertTrue(usuario.contieneDesafio(desafio1));
-		assertTrue(usuario.contieneDesafio(desafio2));
-		assertTrue(usuario.contieneDesafio(desafio3));
-		assertTrue(usuario.contieneDesafio(desafio4));
-		assertFalse(usuario.contieneDesafio(desafio5));
-		assertFalse(usuario.contieneDesafio(desafio6));
-		assertFalse(usuario.contieneDesafio(desafio7));
-		
-		usuario.agregarDeafio(desafio5);
-		usuario.agregarDeafio(desafio6);
-		usuario.agregarDeafio(desafio7);
-		
-		assertTrue(usuario.contieneDesafio(desafio1));
-		assertTrue(usuario.contieneDesafio(desafio2));
-		assertTrue(usuario.contieneDesafio(desafio3));
-		assertTrue(usuario.contieneDesafio(desafio4));
-		assertTrue(usuario.contieneDesafio(desafio5));
-		assertTrue(usuario.contieneDesafio(desafio6));
-		assertTrue(usuario.contieneDesafio(desafio7));
 	}
 	
 	@Test
-	void testAgregarDesafioYGet() {
+	void testAgregarDesafioYGet() throws Exception {
 		usuario = new Usuario(recomendacionFavorita, preferencias2);
 		
-		usuario.agregarDeafio(desafio1);
-		usuario.agregarDeafio(desafio2);
-		usuario.agregarDeafio(desafio3);
-		usuario.agregarDeafio(desafio4);
-		usuario.agregarDeafio(desafio1);
+		usuario.agregarDesafio(desafio1);
+		usuario.agregarDesafio(desafio2);
+		usuario.agregarDesafio(desafio3);
+		usuario.agregarDesafio(desafio4);
+		
+		assertThrows(Exception.class, () -> {
+			usuario.agregarDesafio(desafio1);
+	    });
 		
 		assertEquals(4, usuario.getDesafios().size());
 	}
@@ -212,11 +186,11 @@ class TestUsuario {
 	
 	
 	@Test
-	void testDesafiosNoAgregados() {
+	void testDesafiosNoAgregados() throws Exception {
 		usuario = new Usuario(recomendacionFavorita, preferencias1);
-		usuario.agregarDeafio(desafio1);
-		usuario.agregarDeafio(desafio2);
-		usuario.agregarDeafio(desafio3);
+		usuario.agregarDesafio(desafio1);
+		usuario.agregarDesafio(desafio2);
+		usuario.agregarDesafio(desafio3);
 		
 		assertFalse(usuario.desafiosNoAgregados(proyecto).contains(desafio1));
 		assertFalse(usuario.desafiosNoAgregados(proyecto).contains(desafio2));

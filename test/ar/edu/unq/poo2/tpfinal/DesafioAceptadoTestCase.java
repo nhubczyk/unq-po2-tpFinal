@@ -30,18 +30,31 @@ class DesafioAceptadoTestCase {
 	}
 	
 	@Test
-	void testVotarDesafio() {
-		assertTrue(desafioAceptado.votarDesafio(0));
-		assertTrue(desafioAceptado.votarDesafio(1));
-		assertTrue(desafioAceptado.votarDesafio(2));
-		assertTrue(desafioAceptado.votarDesafio(3));
-		assertTrue(desafioAceptado.votarDesafio(4));
-		assertTrue(desafioAceptado.votarDesafio(5));
+	void testVotarDesafio() throws Exception {
 		
-		assertFalse(desafioAceptado.votarDesafio(-1));
-		assertFalse(desafioAceptado.votarDesafio(-10));
-		assertFalse(desafioAceptado.votarDesafio(6));
-		assertFalse(desafioAceptado.votarDesafio(10));
+		desafioAceptado.votarDesafio(0);
+		desafioAceptado.votarDesafio(1);
+		desafioAceptado.votarDesafio(2);
+		desafioAceptado.votarDesafio(3);
+		desafioAceptado.votarDesafio(4);
+		desafioAceptado.votarDesafio(5);
+		
+		assertThrows(Exception.class, () -> {
+			desafioAceptado.votarDesafio(-1);
+	    });
+		
+		assertThrows(Exception.class, () -> {
+			desafioAceptado.votarDesafio(-10);
+	    });
+		
+		assertThrows(Exception.class, () -> {
+			desafioAceptado.votarDesafio(6);
+	    });
+		
+		assertThrows(Exception.class, () -> {
+			desafioAceptado.votarDesafio(10);
+	    });
+		
 	}
 
 }
