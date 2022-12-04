@@ -16,11 +16,9 @@ class FiltroTest {
 	private Proyecto proyectoTrue;
 	private Proyecto proyectoFalse;
 	
-	@BeforeEach
-	void setUp() {
-		//si no usara metodos abstactos podria haber hecho:
-		//filtro = mock(Filtro.class, Mockito.CALLS_REAL_METHODS);
-
+	
+	@Test
+	void test() {
 		filtro = mock(Filtro.class);
 		
 		proyectoTrue = mock(Proyecto.class);
@@ -32,11 +30,9 @@ class FiltroTest {
 	    doCallRealMethod()
 	      .when(filtro)
 	      .cumplenFiltro(Mockito.anyList());
-	}
-	
-	
-	@Test
-	void test() {
+	    
+	    
+		
 		List<Proyecto> proyectos = Arrays.asList(proyectoTrue, proyectoFalse);
 		assertTrue(filtro.cumplenFiltro(proyectos).contains(proyectoTrue));
 		assertFalse(filtro.cumplenFiltro(proyectos).contains(proyectoFalse));

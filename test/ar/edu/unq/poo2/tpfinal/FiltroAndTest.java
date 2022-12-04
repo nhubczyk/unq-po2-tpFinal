@@ -16,30 +16,20 @@ class FiltroAndTest {
 	private FiltroAnd filtroAnd; //SUT
 	private Filtro filtroTrue; //DOC
 	private Filtro filtroFalse; //DOC
-	private Proyecto p;
+	private Proyecto p; //DOC
 	
-	@BeforeEach
-	void setUp() throws Exception {
+	@Test
+	void testCumpleFiltro() {
 		filtroTrue = mock(Filtro.class);
 		filtroFalse = mock(Filtro.class);
 		p = mock(Proyecto.class);
 		
 		when(filtroTrue.cumpleFiltro(p)).thenReturn(true);
 		when(filtroFalse.cumpleFiltro(p)).thenReturn(false);
-	}
-
-	
-//	@Test
-//	void testSePreguntaAlHijoSiCumpleFiltro2() {
-//		filtroAnd = new FiltroAnd(filtroTrue, filtroFalse);
-//		
-//		filtroAnd.cumpleFiltro(p);
-//		verify(filtroTrue).cumpleFiltro(p);
-//		verify(filtroFalse).cumpleFiltro(p);
-//	}
-//	
-	@Test
-	void testCumpleFiltro() {
+		
+		
+		
+		
 		filtroAnd = new FiltroAnd(filtroTrue, filtroTrue);				
 		
 		assertTrue(filtroAnd.cumpleFiltro(p));
@@ -55,7 +45,6 @@ class FiltroAndTest {
 		filtroAnd = new FiltroAnd(filtroFalse, filtroFalse);				
 		
 		assertFalse(filtroAnd.cumpleFiltro(p));
-	
 	}
 
 }

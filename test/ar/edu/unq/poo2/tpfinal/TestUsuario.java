@@ -6,6 +6,7 @@ import static org.mockito.Mockito.*;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Arrays;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -37,8 +38,12 @@ class TestUsuario {
 	
 	private Usuario usuarioConDesafiosMockeados1;
 	private Usuario usuarioConDesafiosMockeados2;
+	private Usuario usuarioConNDesafiosMockeados;
 	
 	private Proyecto proyecto;
+	private List<Desafio> desafiosProyecto;
+	private List<Desafio> desafiosCoincidencia;
+	private List<Desafio> desafiosSimilitud;
 
 	@BeforeEach
 	void setUp() {
@@ -92,15 +97,23 @@ class TestUsuario {
 		
 		usuarioConDesafiosMockeados1 = mock(Usuario.class, CALLS_REAL_METHODS);
 		when(usuarioConDesafiosMockeados1.getDesafios()).thenReturn(Arrays.asList(desafioUActivo1, desafioUActivo3, desafioUActivo4));
-
 		
 		usuarioConDesafiosMockeados2 = mock(Usuario.class, CALLS_REAL_METHODS);
 		when(usuarioConDesafiosMockeados2.getDesafios()).thenReturn(Arrays.asList(desafioUActivo1, desafioUActivo3, desafioUActivo4
 				, desafioUCompletado1, desafioUCompletado2, desafioUCompletado3));
 		
 		
-		when(proyecto.getDesafios()).thenReturn(Arrays.asList(desafio1, desafio2, desafio3, desafio4, desafio5, desafio6, desafio7));
+		desafiosProyecto = Arrays.asList(desafio1, desafio2, desafio3, desafio4, desafio5, desafio6, desafio7);
+		when(proyecto.getDesafios()).thenReturn(desafiosProyecto);
 
+		usuarioConNDesafiosMockeados = mock(Usuario.class);
+		desafiosCoincidencia = mock(List.class);
+		desafiosSimilitud = mock(List.class);
+		when(usuarioConNDesafiosMockeados.nDesafiosConMayorCoincidencia(anyInt(), anyList())).thenReturn(desafiosCoincidencia);
+		when(usuarioConNDesafiosMockeados.nDesafiosConMayorSimilitud(anyInt(), anyList())).thenReturn(desafiosSimilitud);
+		when(usuarioConNDesafiosMockeados.nDesafiosConMayorCoincidencia(anyInt(), any(Proyecto.class))).thenCallRealMethod();
+		when(usuarioConNDesafiosMockeados.nDesafiosConMayorSimilitud(anyInt(), any(Proyecto.class))).thenCallRealMethod();
+		when(usuarioConNDesafiosMockeados.desafiosNoAgregados(proyecto)).thenReturn(desafiosProyecto);
 	}
 	
 	@Test
@@ -207,22 +220,63 @@ class TestUsuario {
 	
 	@Test
 	void testNDesafiosConMayorCoincidencia_Proyecto() {
+		verify(usuarioConNDesafiosMockeados, never()).nDesafiosConMayorCoincidencia(5, desafiosProyecto);
+		assertEquals(desafiosCoincidencia, usuarioConNDesafiosMockeados.nDesafiosConMayorCoincidencia(5, proyecto));
+		verify(usuarioConNDesafiosMockeados).nDesafiosConMayorCoincidencia(5, desafiosProyecto);
+		
+		verify(usuarioConNDesafiosMockeados, never()).nDesafiosConMayorCoincidencia(10, desafiosProyecto);
+		assertEquals(desafiosCoincidencia, usuarioConNDesafiosMockeados.nDesafiosConMayorCoincidencia(10, proyecto));
+		verify(usuarioConNDesafiosMockeados).nDesafiosConMayorCoincidencia(10, desafiosProyecto);
 		
 	}
 	
 	@Test
 	void testNDesafiosConMayorCoincidencia_ListaDesafios() {
+		usuario = new Usuario(recomendacionPreferencia, preferencias1);
+		when(preferencias1.diferenciaConDesafio(desafio1)).thenReturn(4);
+		when(preferencias1.diferenciaConDesafio(desafio2)).thenReturn(1);
+		when(preferencias1.diferenciaConDesafio(desafio3)).thenReturn(5);
+		when(preferencias1.diferenciaConDesafio(desafio4)).thenReturn(0);
+		when(preferencias1.diferenciaConDesafio(desafio5)).thenReturn(3);
+		when(preferencias1.diferenciaConDesafio(desafio6)).thenReturn(2);
+		when(preferencias1.diferenciaConDesafio(desafio7)).thenReturn(6);
 		
+		List<Desafio> desafios = usuario.nDesafiosConMayorCoincidencia(4, desafiosProyecto);
+		
+		assertEquals(desafios, Arrays.asList(desafio4, desafio2, desafio6, desafio5));
+		
+		desafios = usuario.nDesafiosConMayorCoincidencia(2, desafiosProyecto);
+		assertEquals(desafios, Arrays.asList(desafio4, desafio2));
 	}
 	
 	@Test
 	void testNDesafiosConMayorSimilitud_Proyecto() {
+		verify(usuarioConNDesafiosMockeados, never()).nDesafiosConMayorSimilitud(5, desafiosProyecto);
+		assertEquals(desafiosSimilitud, usuarioConNDesafiosMockeados.nDesafiosConMayorSimilitud(5, proyecto));
+		verify(usuarioConNDesafiosMockeados).nDesafiosConMayorSimilitud(5, desafiosProyecto);
 		
+		verify(usuarioConNDesafiosMockeados, never()).nDesafiosConMayorSimilitud(10, desafiosProyecto);
+		assertEquals(desafiosSimilitud, usuarioConNDesafiosMockeados.nDesafiosConMayorSimilitud(10, proyecto));
+		verify(usuarioConNDesafiosMockeados).nDesafiosConMayorSimilitud(10, desafiosProyecto);
 	}
 	
 	@Test
 	void testNDesafiosConMayorSimilitud_ListaDesafios() {
+		usuario = new Usuario(recomendacionFavorita, preferencias1);
+		when(preferencias1.getDesafioPreferido()).thenReturn(desafio1);
+		when(desafio1.similitudConDesafio(desafio1)).thenReturn(0.5f);
+		when(desafio2.similitudConDesafio(desafio1)).thenReturn(0.3f);
+		when(desafio3.similitudConDesafio(desafio1)).thenReturn(0.2f);
+		when(desafio4.similitudConDesafio(desafio1)).thenReturn(0.1f);
+		when(desafio5.similitudConDesafio(desafio1)).thenReturn(0.4f);
+		when(desafio6.similitudConDesafio(desafio1)).thenReturn(0f);
+		when(desafio7.similitudConDesafio(desafio1)).thenReturn(0.6f);
 		
+		List<Desafio> desafios = usuario.nDesafiosConMayorSimilitud(4, desafiosProyecto);
+		assertEquals(desafios, Arrays.asList(desafio6, desafio4, desafio3, desafio2));
+		
+		desafios = usuario.nDesafiosConMayorSimilitud(2, desafiosProyecto);
+		assertEquals(desafios, Arrays.asList(desafio6, desafio4));
 	}
 
 }

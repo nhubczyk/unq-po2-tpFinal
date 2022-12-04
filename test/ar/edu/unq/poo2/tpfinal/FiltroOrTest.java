@@ -15,32 +15,20 @@ class FiltroOrTest {
 	private FiltroOr filtroOr; //SUT
 	private Filtro filtroTrue; //DOC
 	private Filtro filtroFalse; //DOC
-	private Proyecto p;
+	private Proyecto p; //DOC
 	
-	@BeforeEach
-	void setUp() throws Exception {
+	
+	@Test
+	void testCumpleFiltro() {
 		filtroTrue = mock(Filtro.class);
 		filtroFalse = mock(Filtro.class);
 		p = mock(Proyecto.class);
 		
 		when(filtroTrue.cumpleFiltro(p)).thenReturn(true);
 		when(filtroFalse.cumpleFiltro(p)).thenReturn(false);
-	}
-
-//	@Test
-//	void testSePreguntaAlHijoSiCumpleFiltro() {
-//		List<Filtro> filtros;
-//		
-//		filtros = new ArrayList<Filtro>(Arrays.asList(filtroFalse, filtroTrue));
-//		filtroOr = new FiltroOr(filtros);
-//		
-//		filtroOr.cumpleFiltro(p);
-//		verify(filtroTrue).cumpleFiltro(p);
-//		verify(filtroFalse).cumpleFiltro(p);
-//	}
-	
-	@Test
-	void testCumpleFiltro() {
+		
+		
+		
 		filtroOr = new FiltroOr(filtroTrue, filtroTrue);				
 		
 		assertTrue(filtroOr.cumpleFiltro(p));
