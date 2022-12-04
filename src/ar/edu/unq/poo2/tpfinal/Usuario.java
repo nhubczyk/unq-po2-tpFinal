@@ -42,6 +42,7 @@ public class Usuario {
 		return getDesafioUsuarioDeDesafio(desafio).getMomentoSuperacion();
 	}
 
+	
 	public float porcentajeDesafiosCompletados() {
 		int cantidadCompletados = 0;
 		for (DesafioUsuario desafio : this.getDesafios()) {
@@ -53,7 +54,11 @@ public class Usuario {
 	}
 	
 	
-	
+	/**
+	 * @param desafio - desafio a calcular porcentaje de completitud
+	 * @return El porcentaje de completitud, pero si el desafio no esta
+	 * incluido en los desafios del usuario devuelve 0
+	 */
 	//si desafio no esta incluido en los desafios del usuario devuelve 0
 	public float porcentajeCompletitudDesafio(Desafio desafio) {
 		DesafioUsuario desafioU = getDesafioUsuarioDeDesafio(desafio);
@@ -86,26 +91,61 @@ public class Usuario {
 		this.desafios.add(new DesafioUsuario(desafio));
 	}
 	
-	
+	/**
+	 * @param proyecto - proyecto que contiene una lista de desafios
+	 * @return La lista de desafios que contiene proyecto sin incluir
+	 * aquellos que estan agregados al usuario
+	 */
 	public List<Desafio> desafiosNoAgregados(Proyecto proyecto) {
 		return proyecto.getDesafios().stream()
 				.filter(desafio -> !this.contieneDesafio(desafio)).toList();
 	}
 	
+	/**
+	 * @param cantidad - lo largo que se quiere que sea la lista devuelta
+	 * @param proyecto - contenedor de los desafios que se van a comparar con el desafio favorito
+	 * @return
+	 * Los desafios pertenecientes a proyecto ordenados por mayor coincidencia que tienen
+	 * con las preferencias del usuario, y que ademas no estan
+	 * agregados a usuario
+	 */
 	public List<Desafio> nDesafiosConMayorCoincidencia(int cantidad, Proyecto proyecto) {
 		return nDesafiosConMayorCoincidencia(cantidad, desafiosNoAgregados(proyecto));
 	}
 	
+	
+	/**
+	 * @param cantidad - lo largo que se quiere que sea la lista devuelta
+	 * @param desafios - desafios a comparar con las preferencias del usuario
+	 * @return Los desafios de la lista desafios
+	 * rdenados por mayor coincidencia que tienen con las
+	 * preferencias del usuario
+	 */
 	public List<Desafio> nDesafiosConMayorCoincidencia(int cantidad, List<Desafio> desafios) {
 		return desafios.stream()
 				.sorted(Comparator.comparingInt(d -> this.getPreferenciasUsuario().diferenciaConDesafio(d)))
 				.limit(cantidad).toList();
 	}
 	
+	/**
+	 * @param cantidad - lo largo que se quiere que sea la lista devuelta
+	 * @param proyecto - contenedor de los desafios que se van a comparar con el desafio favorito
+	 * @return
+	 * Los desafios pertenecientes a proyecto rdenados por mayor similitud que tienen
+	 * con el desafio favorito del usuario, y que ademas no estan
+	 * agregados a usuario
+	 */
 	public List<Desafio> nDesafiosConMayorSimilitud(int cantidad, Proyecto proyecto) {
 		return nDesafiosConMayorSimilitud(cantidad, desafiosNoAgregados(proyecto));
 	}
 	
+	/**
+	 * @param cantidad - lo largo que se quiere que sea la lista devuelta
+	 * @param desafios - desafios a comparar con el desafio favorito
+	 * @return Los desafios de la lista desafios
+	 * rdenados por mayor similitud que tienen con el
+	 * desafio favorito del usuario
+	 */
 	public List<Desafio> nDesafiosConMayorSimilitud(int cantidad, List<Desafio> desafios){
 		Desafio desafioFav = this.getPreferenciasUsuario().getDesafioPreferido();
 		return desafios.stream()
