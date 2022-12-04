@@ -37,7 +37,6 @@ public class Usuario {
 		return metodoRecomendacion;
 	}
 
-	
 	public LocalDate getMomentoSuperacion(Desafio desafio) {
 		return getDesafioUsuarioDeDesafio(desafio).getMomentoSuperacion();
 	}
