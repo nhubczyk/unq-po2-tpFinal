@@ -14,4 +14,4 @@ Link del UML en drive: https://drive.google.com/file/d/1CB0XQDros08WpVStHTZbII6h
 
 También se encuentra el diagrama en formato drawio
 
-![tpFinal](https://user-images.githubusercontent.com/49459705/200213997-0fc4cd52-ebc4-4290-a471-35d0f3144363.jpg)
+![tpFinal](https://user-images.githubusercontent.com/49459705/205515830-b4ad356f-7c8b-4866-b642-822f07e7a306.jpg)
